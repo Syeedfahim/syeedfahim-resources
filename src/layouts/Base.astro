@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/inter/opsz.css';
 import '@fontsource/instrument-serif/400-italic.css';
+import 'lenis/dist/lenis.css';
 import '../styles/global.css';
 import interUrl from '@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url';
 import Nav from '../components/Nav.astro';
@@ -38,6 +39,15 @@ const imageUrl = new URL(image, Astro.site).href;
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      (function () {
+        var d = document.documentElement, off = false, seen = false;
+        d.classList.add('js');
+        try { off = localStorage.getItem('motion') === 'off'; seen = sessionStorage.getItem('pre') === '1'; } catch (e) {}
+        if (off) d.classList.add('motion-off', 'is-ready');
+        else d.classList.add(seen ? 'is-ready' : 'is-loading');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -74,11 +84,21 @@ const imageUrl = new URL(image, Astro.site).href;
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   </head>
   <body>
+    <div class="preloader" data-preloader aria-hidden="true">
+      <div class="preloader__inner">
+        <span class="preloader__word">Syeed <i>Fahim</i></span>
+        <div class="preloader__bar"><span data-bar></span></div>
+        <span class="preloader__pct" data-pct>0%</span>
+      </div>
+    </div>
     <a class="skip-link" href="#main">Skip to content</a>
     <Nav />
     <main id="main">
       <slot />
     </main>
     <Footer />
+    <script>
+      import '../scripts/motion';
+    </script>
   </body>
 </html>

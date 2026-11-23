@@ -1,0 +1,37 @@
+---
+import { resources, posts, CATEGORIES } from '../lib/data';
+// Real numbers only: the first three are computed from the data files.
+const stats = [
+  { n: resources.length, label: 'Free resources', note: 'with official links' },
+  { n: posts.length, label: posts.length === 1 ? 'Daily post' : 'Daily posts', note: 'and counting' },
+  { n: CATEGORIES.length, label: 'Categories', note: 'AI tools to Figma plugins' },
+  { n: 1000000, label: 'Monthly views', note: 'on Pinterest', compact: true },
+];
+const compact = (v: number) => new Intl.NumberFormat('en', { notation: 'compact' }).format(v);
+---
+<section class="stats theme-light" aria-label="In numbers">
+  <div class="container">
+    <ul class="stats__grid" data-stagger="100">
+      {stats.map((s) => (
+        <li class="stat" data-reveal>
+          <span class="stat__n" data-count={s.n} {...(s.compact ? { 'data-compact': '' } : {})}>{s.compact ? compact(s.n) : s.n}</span>
+          <span class="stat__label">{s.label}</span>
+          <span class="stat__note">{s.note}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .stats { padding-block: clamp(3rem, 2rem + 4vw, 5.5rem); }
+  .stats__grid { list-style: none; padding: 0; display: grid; gap: var(--gutter); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 900px) { .stats__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .stat {
+    display: grid; gap: var(--s-1); padding: var(--s-5); border-radius: var(--radius-l);
+    background: color-mix(in srgb, var(--bone) 70%, var(--sand)); border: 1px solid var(--line-light);
+  }
+  .stat__n { font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem); font-weight: 800; letter-spacing: -0.06em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat__label { margin-top: var(--s-3); font-weight: 700; }
+  .stat__note { color: var(--slate); font-size: 0.875rem; }
+</style>

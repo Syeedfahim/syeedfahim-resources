@@ -1,0 +1,29 @@
+---
+// Giant type that slides sideways as you scroll (decorative).
+const rows = [
+  ['AI tools', 'Prompts', 'GitHub repos', 'Claude skills', 'MCP servers'],
+  ['Fonts', 'Textures', 'Mockups', 'Figma plugins', 'Workflows'],
+];
+---
+<section class="band theme-ink" aria-hidden="true" data-band>
+  {rows.map((r, i) => (
+    <div class="band__row" data-band-row>
+      {[...r, ...r].map((w, j) => (
+        <span class:list={['band__w', { 'band__w--serif': (j + i) % 2 === 1 }]}>{w}<span class="band__star">✦</span></span>
+      ))}
+    </div>
+  ))}
+</section>
+
+<style>
+  .band { overflow: hidden; padding-block: clamp(3rem, 2rem + 4vw, 6rem); display: grid; gap: var(--s-2); border-block: 1px solid var(--line-dark); }
+  .band__row { display: flex; white-space: nowrap; will-change: transform; }
+  .band__w {
+    display: inline-flex; align-items: center; gap: 0.35em; padding-right: 0.35em;
+    font-size: clamp(3rem, 1.5rem + 7vw, 8.5rem); font-weight: 800; letter-spacing: -0.05em; line-height: 1.05;
+    color: transparent; -webkit-text-stroke: 1.5px rgb(242 238 232 / 0.4);
+  }
+  .band__w--serif { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: var(--sand); -webkit-text-stroke: 0; }
+  .band__star { font-size: 0.35em; color: var(--steel); -webkit-text-stroke: 0; font-style: normal; }
+  .band__row:nth-child(2) { transform: translate3d(-28%, 0, 0); }
+</style>

@@ -7,7 +7,7 @@ const fresh = isNew(r.date_added);
 const post = showPost ? postBySlug(r.post_slug) : undefined;
 const host = new URL(r.url).hostname.replace(/^www\./, '');
 ---
-<article class:list={['card', { 'card--featured': featured }]}>
+<article class:list={['card', { 'card--featured': featured }]} data-tilt data-reveal>
   <div class="card__top">
     <span class="card__cat">{index !== undefined && <span class="card__num serif">{String(index + 1).padStart(2, '0')}</span>}{categoryLabel(r.category)}</span>
     {fresh && <span class="badge badge-new">New</span>}
@@ -30,9 +30,16 @@ const host = new URL(r.url).hostname.replace(/^www\./, '');
     position: relative; display: flex; flex-direction: column; gap: var(--s-3);
     padding: var(--s-5); border-radius: var(--radius-l); background: var(--bone); color: var(--ink);
     border: 1px solid var(--line-light); min-height: 260px;
-    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+    transition: box-shadow 0.3s var(--ease-out);
   }
-  .card:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgb(10 40 63 / 0.45); }
+  .card:hover { box-shadow: 0 30px 60px -30px rgb(10 40 63 / 0.55); }
+  .card::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgb(81 134 179 / 0.16), transparent 60%);
+  }
+  .card:hover::after { opacity: 1; }
+  .card__go :global(svg) { transition: transform 0.3s var(--ease-out); }
+  .card__go:hover :global(svg) { transform: translate(2px, -2px); }
   .card__top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
   .card__cat { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocean); display: inline-flex; gap: var(--s-2); align-items: baseline; }
   .card__num { font-size: 1.5rem; letter-spacing: 0; text-transform: none; color: var(--bronze); line-height: 1; }

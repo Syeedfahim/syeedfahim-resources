@@ -18,7 +18,7 @@ const links = [
         <li class="nav__cta-mobile"><a class="btn btn-primary" href={SITE.instagram} target="_blank" rel="noopener">Follow on Instagram</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary nav__cta" href={SITE.instagram} target="_blank" rel="noopener">
+    <a class="btn btn-primary nav__cta" href={SITE.instagram} target="_blank" rel="noopener" data-magnetic>
       <Icon name="instagram" /> Follow on Instagram
     </a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>
@@ -32,7 +32,10 @@ const links = [
     position: fixed; inset: 0 0 auto; z-index: 50;
     background: rgb(5 7 9 / 0.62); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
     border-bottom: 1px solid var(--line-dark); color: var(--bone);
+    transition: transform 0.5s var(--ease-out), background-color 0.3s;
   }
+  .nav.nav--hidden { transform: translateY(-100%); }
+  .nav.nav--scrolled { background: rgb(5 7 9 / 0.8); }
   .nav__inner { display: flex; align-items: center; gap: var(--s-5); height: 68px; }
   .nav__brand { font-weight: 800; letter-spacing: -0.03em; font-size: 1.2rem; text-decoration: none; margin-right: auto; }
   .nav__brand .serif { font-weight: 400; color: var(--sand); font-size: 1.15em; }

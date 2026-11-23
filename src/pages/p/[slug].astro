@@ -40,7 +40,7 @@ const jsonLd = {
     <div class="post-hero__glow" aria-hidden="true"></div>
     <div class="container">
       <p class="eyebrow"><a href="/#drops">Latest drops</a> · <time datetime={post.date}>{formatDate(post.date)}</time></p>
-      <h1 id="post-title" class="h-1 post-hero__title">{post.title}</h1>
+      <h1 id="post-title" class="h-1 post-hero__title" data-split>{post.title}</h1>
       <p class="lede post-hero__hook">{post.hook}</p>
       <div class="post-hero__ctas">
         <a class="btn btn-primary" href="#links">Get the {items.length} links <Icon name="arrow-right" /></a>
@@ -48,9 +48,9 @@ const jsonLd = {
       </div>
     </div>
     <div class="slides" aria-label="Carousel slides">
-      <ul class="slides__track container">
+      <ul class="slides__track container" data-stagger="70">
         {post.slides.map((s, i) => (
-          <li>
+          <li data-reveal>
             <a href={s} target="_blank" rel="noopener" class="slide">
               <img src={thumb(s)} alt={`${post.title} — slide ${i + 1} of ${post.slides.length}`} width="480" height="600" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
             </a>
@@ -65,11 +65,11 @@ const jsonLd = {
       <div class="section-head">
         <div>
           <p class="eyebrow">In this post</p>
-          <h2 id="links-title" class="h-1">{items.length} free resources, <span class="serif">official links.</span></h2>
+          <h2 id="links-title" class="h-1" data-split>{items.length} free resources, <span class="serif">official links.</span></h2>
         </div>
         <p class="muted measure">Every button goes to the creator’s own site or repo. Check each licence before using a resource in client work.</p>
       </div>
-      <div class="post-grid">
+      <div class="post-grid" data-stagger="90">
         {items.map((r, i) => <ResourceCard r={r} index={i} showPost={false} />)}
       </div>
     </div>

@@ -11,15 +11,15 @@ const list = posts.filter((p) => p.slug !== exclude).slice(0, limit);
       <div class="section-head">
         <div>
           <p class="eyebrow">One post a day</p>
-          <h2 id="drops-title" class="h-1">{title}<span class="serif">.</span></h2>
+          <h2 id="drops-title" class="h-1" data-split>{title}<span class="serif">.</span></h2>
         </div>
-        <p class="muted measure">Each Instagram carousel gets its own page with every official link — the same page you get in your DM.</p>
+        <p class="muted measure" data-reveal>Each Instagram carousel gets its own page with every official link — the same page you get in your DM.</p>
       </div>
-      <ul class:list={["drops__grid", { "drops__grid--single": list.length === 1 }]}>
+      <ul class:list={["drops__grid", { "drops__grid--single": list.length === 1 }]} data-stagger="120">
         {list.map((p, i) => (
-          <li>
-            <a class="drop" href={`/p/${p.slug}/`}>
-              <div class="drop__img">
+          <li data-reveal>
+            <a class="drop" href={`/p/${p.slug}/`} data-tilt>
+              <div class="drop__img" data-reveal="clip">
                 <img src={thumb(p.cover)} alt="" width="480" height="600" loading="lazy" decoding="async" />
                 {i === 0 && !exclude && <span class="badge badge-new drop__badge">Latest</span>}
               </div>

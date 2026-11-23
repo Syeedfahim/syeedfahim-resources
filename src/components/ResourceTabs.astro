@@ -14,12 +14,12 @@ const tabs = [
     <div class="section-head">
       <div>
         <p class="eyebrow">The library</p>
-        <h2 id="res-title" class="h-1">Every resource, <span class="serif">one tap away.</span></h2>
+        <h2 id="res-title" class="h-1" data-split>Every resource, <span class="serif">one tap away.</span></h2>
       </div>
-      <p class="muted measure">Each card says why it’s useful, shows its licence, and links to the official source — never a re-upload.</p>
+      <p class="muted measure" data-reveal>Each card says why it’s useful, shows its licence, and links to the official source — never a re-upload.</p>
     </div>
 
-    <div class="tabs" role="tablist" aria-label="Resource categories" data-tablist>
+    <div class="tabs" data-reveal role="tablist" aria-label="Resource categories" data-tablist>
       {tabs.map((t, i) => (
         <button
           role="tab"
@@ -38,7 +38,7 @@ const tabs = [
     {tabs.map((t, i) => (
       <div role="tabpanel" id={`panel-${t.key}`} aria-labelledby={`tab-${t.key}`} tabindex="0" class="panel" hidden={i !== 0}>
         {t.items.length > 0 ? (
-          <div class="bento">
+          <div class="bento" data-stagger="90">
             {t.items.map((r, j) => <ResourceCard r={r} featured={j === 0} index={j} />)}
           </div>
         ) : (
@@ -98,6 +98,7 @@ const tabs = [
         t.tabIndex = on ? 0 : -1;
         const p = document.getElementById(t.getAttribute('aria-controls')!);
         if (p) p.hidden = !on;
+        if (p && on) (window as unknown as { __replay?: (el: Element) => void }).__replay?.(p);
       });
       if (focus) tab.focus();
       tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
@@ -119,7 +120,9 @@ const tabs = [
       const t = tabs.find((x) => x.dataset.tab === h);
       if (t) {
         select(t, false);
-        document.getElementById('resources')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        const target = document.getElementById('resources');
+        const lenis = (window as unknown as { __lenis?: { scrollTo: (el: Element, o: object) => void } }).__lenis;
+        if (target) lenis ? lenis.scrollTo(target, { offset: -70 }) : target.scrollIntoView();
       }
     };
     window.addEventListener('hashchange', fromHash);

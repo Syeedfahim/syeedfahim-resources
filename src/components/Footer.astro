@@ -32,7 +32,10 @@ const year = new Date().getFullYear();
   </div>
   <div class="container footer__legal">
     <p>© {year} Syeed Hossain Fahim. Resources belong to their creators; links go to the official sources.</p>
-    <p><a href="/sitemap.xml">Sitemap</a></p>
+    <p class="footer__right">
+      <button class="footer__motion" type="button" data-motion-toggle aria-pressed="false">Motion: <span data-motion-label>On</span></button>
+      <a href="/sitemap.xml">Sitemap</a>
+    </p>
   </div>
 </footer>
 
@@ -40,7 +43,7 @@ const year = new Date().getFullYear();
   .footer { padding-bottom: var(--s-6); border-top: 1px solid var(--line-dark); }
   .footer__mosaic { padding-block: var(--s-7) var(--s-6); }
   .footer__mosaic .marquee__track { gap: var(--s-3); padding-right: var(--s-3); align-items: center; }
-  @media (prefers-reduced-motion: reduce) { .footer__mosaic .marquee__track { flex-wrap: nowrap; justify-content: flex-start; overflow: hidden; } }
+  :global(html.motion-off) .footer__mosaic .marquee__track { flex-wrap: nowrap; justify-content: flex-start; overflow: hidden; }
   .tile { flex: none; width: 128px; aspect-ratio: 4 / 5; border-radius: var(--radius-m); overflow: hidden; background: var(--midnight); opacity: 0.88; }
   .tile--up { transform: translateY(-14px); }
   .tile img { width: 100%; height: 100%; object-fit: cover; }
@@ -59,4 +62,7 @@ const year = new Date().getFullYear();
   .footer__social :global(svg) { width: 18px; height: 18px; }
   .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); font-size: var(--step--1); color: var(--on-dark-muted); }
   .footer__legal a { text-underline-offset: 3px; }
+  .footer__right { display: flex; gap: var(--s-4); align-items: center; }
+  .footer__motion { background: none; border: 1px solid var(--line-dark); border-radius: 999px; padding: 6px 14px; min-height: 36px; cursor: pointer; color: var(--on-dark-muted); font-size: var(--step--1); }
+  .footer__motion:hover { color: var(--bone); border-color: var(--bone); }
 </style>

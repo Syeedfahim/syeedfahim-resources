@@ -6,6 +6,8 @@ import ResourceTabs from '../components/ResourceTabs.astro';
 import LatestDrops from '../components/LatestDrops.astro';
 import About from '../components/About.astro';
 import DmSteps from '../components/DmSteps.astro';
+import Stats from '../components/Stats.astro';
+import ScrollBand from '../components/ScrollBand.astro';
 import { SITE } from '../lib/data';
 
 const jsonLd = {
@@ -19,7 +21,9 @@ const jsonLd = {
 <Base jsonLd={jsonLd}>
   <Hero />
   <FactsMarquee />
+  <Stats />
   <ResourceTabs />
+  <ScrollBand />
   <LatestDrops />
   <About />
   <DmSteps />
