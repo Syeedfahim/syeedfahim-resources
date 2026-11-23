@@ -1,9 +1,34 @@
 [
   {
     "slug": "designer-starter-kit",
-    "date": "2026-11-24",
+    "date": "2026-11-23",
     "title": "6 free resources every designer should save",
     "hook": "One AI tool, one prompt library, one GitHub repo, one font, one texture library and one Figma plugin — all free, all from official sources.",
+    "cover": "/posts/2026-11-23/01.jpg",
+    "slides": [
+      "/posts/2026-11-23/01.jpg",
+      "/posts/2026-11-23/02.jpg",
+      "/posts/2026-11-23/03.jpg",
+      "/posts/2026-11-23/04.jpg",
+      "/posts/2026-11-23/05.jpg",
+      "/posts/2026-11-23/06.jpg",
+      "/posts/2026-11-23/07.jpg",
+      "/posts/2026-11-23/08.jpg"
+    ],
+    "resources": [
+      "upscayl",
+      "prompts-chat",
+      "designer-skills",
+      "inter",
+      "poly-haven-textures",
+      "lucide-figma"
+    ]
+  },
+  {
+    "slug": "tall-fonts",
+    "date": "2026-11-24",
+    "title": "6 free tall fonts that command attention",
+    "hook": "Six condensed display fonts from Google Fonts — free for personal and commercial work under the SIL Open Font License.",
     "cover": "/posts/2026-11-24/01.jpg",
     "slides": [
       "/posts/2026-11-24/01.jpg",
@@ -15,6 +40,13 @@
       "/posts/2026-11-24/07.jpg",
       "/posts/2026-11-24/08.jpg"
     ],
-    "resources": ["upscayl", "prompts-chat", "designer-skills", "inter", "poly-haven-textures", "lucide-figma"]
+    "resources": [
+      "anton",
+      "bebas-neue",
+      "oswald",
+      "big-shoulders",
+      "antonio",
+      "six-caps"
+    ]
   }
 ]
