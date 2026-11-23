@@ -1,0 +1,62 @@
+---
+import { posts, thumb, SITE } from '../lib/data';
+import Icon from './Icon.astro';
+// Mosaic of post covers + slides; repeat to fill a long strip.
+let tiles = posts.flatMap((p) => p.slides.slice(0, 4).map((s) => ({ src: thumb(s), href: `/p/${p.slug}/` }))).slice(0, 16);
+while (tiles.length > 0 && tiles.length < 10) tiles = tiles.concat(tiles);
+const year = new Date().getFullYear();
+---
+<footer class="footer theme-ink">
+  {tiles.length > 0 && (
+    <div class="marquee footer__mosaic" style="--dur:60s" aria-hidden="true">
+      {[0, 1].map(() => (
+        <div class="marquee__track">
+          {tiles.map((t, i) => (
+            <a href={t.href} tabindex="-1" class:list={['tile', { 'tile--up': i % 2 === 1 }]}>
+              <img src={t.src} alt="" width="480" height="600" loading="lazy" decoding="async" />
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  )}
+  <div class="container footer__inner">
+    <div>
+      <a class="footer__brand" href="/">Syeed <span class="serif">Fahim</span></a>
+      <p class="footer__tag">Free resources for designers, every single day.</p>
+    </div>
+    <ul class="footer__social">
+      <li><a href={SITE.instagram} target="_blank" rel="noopener"><Icon name="instagram" /> Instagram</a></li>
+      <li><a href={SITE.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" /> LinkedIn</a></li>
+    </ul>
+  </div>
+  <div class="container footer__legal">
+    <p>© {year} Syeed Hossain Fahim. Resources belong to their creators; links go to the official sources.</p>
+    <p><a href="/sitemap.xml">Sitemap</a></p>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-bottom: var(--s-6); border-top: 1px solid var(--line-dark); }
+  .footer__mosaic { padding-block: var(--s-7) var(--s-6); }
+  .footer__mosaic .marquee__track { gap: var(--s-3); padding-right: var(--s-3); align-items: center; }
+  @media (prefers-reduced-motion: reduce) { .footer__mosaic .marquee__track { flex-wrap: nowrap; justify-content: flex-start; overflow: hidden; } }
+  .tile { flex: none; width: 128px; aspect-ratio: 4 / 5; border-radius: var(--radius-m); overflow: hidden; background: var(--midnight); opacity: 0.88; }
+  .tile--up { transform: translateY(-14px); }
+  .tile img { width: 100%; height: 100%; object-fit: cover; }
+  @media (min-width: 900px) { .tile { width: 168px; } }
+  .footer__inner { display: grid; gap: var(--s-5); padding-block: var(--s-6); border-top: 1px solid var(--line-dark); }
+  @media (min-width: 760px) { .footer__inner { grid-template-columns: 1fr auto; align-items: center; } }
+  .footer__brand { font-size: var(--step-3); font-weight: 800; letter-spacing: -0.04em; text-decoration: none; }
+  .footer__brand .serif { color: var(--sand); }
+  .footer__tag { color: var(--on-dark-muted); margin-top: var(--s-2); }
+  .footer__social { list-style: none; padding: 0; display: flex; gap: var(--s-2); flex-wrap: wrap; }
+  .footer__social a {
+    display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; padding: 0 var(--s-4);
+    border: 1px solid var(--line-dark); border-radius: 999px; text-decoration: none; font-weight: 500;
+  }
+  .footer__social a:hover { border-color: var(--bone); }
+  .footer__social :global(svg) { width: 18px; height: 18px; }
+  .footer__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); font-size: var(--step--1); color: var(--on-dark-muted); }
+  .footer__legal a { text-underline-offset: 3px; }
+</style>

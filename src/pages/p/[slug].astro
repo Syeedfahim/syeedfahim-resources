@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import LatestDrops from '../../components/LatestDrops.astro';
+import DmSteps from '../../components/DmSteps.astro';
+import Icon from '../../components/Icon.astro';
+import { posts, resourceById, thumb, formatDate, SITE, type Post } from '../../lib/data';
+
+export function getStaticPaths() {
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props as { post: Post };
+const items = post.resources.map(resourceById).filter((r) => r !== undefined);
+const description = `${post.hook} ${items.length} free resources with links to the official sources.`.slice(0, 300);
+const pageUrl = new URL(`/p/${post.slug}/`, Astro.site).href;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: post.title,
+  description: post.hook,
+  datePublished: post.date,
+  image: new URL(post.cover, Astro.site).href,
+  author: { '@type': 'Person', name: SITE.author, url: SITE.instagram },
+  mainEntityOfPage: pageUrl,
+  about: items.map((r) => ({ '@type': 'CreativeWork', name: r.name, url: r.url, license: r.licence_url ?? r.licence })),
+};
+---
+<Base
+  title={post.title}
+  description={description}
+  image={post.cover}
+  imageAlt={`${post.title} — cover`}
+  imageWidth={1080}
+  imageHeight={1350}
+  type="article"
+  publishedTime={post.date}
+  jsonLd={jsonLd}
+>
+  <section class="post-hero theme-dark grain" aria-labelledby="post-title">
+    <div class="post-hero__glow" aria-hidden="true"></div>
+    <div class="container">
+      <p class="eyebrow"><a href="/#drops">Latest drops</a> · <time datetime={post.date}>{formatDate(post.date)}</time></p>
+      <h1 id="post-title" class="h-1 post-hero__title">{post.title}</h1>
+      <p class="lede post-hero__hook">{post.hook}</p>
+      <div class="post-hero__ctas">
+        <a class="btn btn-primary" href="#links">Get the {items.length} links <Icon name="arrow-right" /></a>
+        <a class="btn btn-ghost" href={SITE.instagram} target="_blank" rel="noopener"><Icon name="instagram" /> {SITE.instagramHandle}</a>
+      </div>
+    </div>
+    <div class="slides" aria-label="Carousel slides">
+      <ul class="slides__track container">
+        {post.slides.map((s, i) => (
+          <li>
+            <a href={s} target="_blank" rel="noopener" class="slide">
+              <img src={thumb(s)} alt={`${post.title} — slide ${i + 1} of ${post.slides.length}`} width="480" height="600" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section theme-light post-links" id="links" aria-labelledby="links-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">In this post</p>
+          <h2 id="links-title" class="h-1">{items.length} free resources, <span class="serif">official links.</span></h2>
+        </div>
+        <p class="muted measure">Every button goes to the creator’s own site or repo. Check each licence before using a resource in client work.</p>
+      </div>
+      <div class="post-grid">
+        {items.map((r, i) => <ResourceCard r={r} index={i} showPost={false} />)}
+      </div>
+    </div>
+  </section>
+
+  <DmSteps />
+  <LatestDrops exclude={post.slug} title="More drops" />
+</Base>
+
+<style>
+  .post-hero { padding-top: calc(68px + clamp(2.5rem, 2rem + 4vw, 6rem)); padding-bottom: var(--s-7); position: relative; overflow: hidden; isolation: isolate; }
+  .post-hero__glow { position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 50% at 85% 0%, rgb(81 134 179 / 0.5), transparent 70%), radial-gradient(40% 50% at 0% 90%, rgb(24 74 106 / 0.9), transparent 70%); }
+  .post-hero .eyebrow a { text-underline-offset: 3px; }
+  .post-hero__title { margin-top: var(--s-4); max-width: 18ch; }
+  .post-hero__hook { margin-top: var(--s-5); max-width: 52ch; }
+  .post-hero__ctas { margin-top: var(--s-6); display: flex; flex-wrap: wrap; gap: var(--s-3); }
+  .slides { margin-top: var(--s-7); }
+  .slides__track {
+    list-style: none; display: flex; gap: var(--s-3); overflow-x: auto; scroll-snap-type: x mandatory;
+    padding-bottom: var(--s-4); scrollbar-width: thin; scrollbar-color: var(--steel) transparent;
+  }
+  .slides__track li { flex: none; width: min(62vw, 260px); scroll-snap-align: start; }
+  .slide { display: block; border-radius: var(--radius-m); overflow: hidden; aspect-ratio: 4 / 5; background: var(--midnight); box-shadow: 0 20px 40px -24px rgb(5 7 9 / 0.9); }
+  .slide img { width: 100%; height: 100%; object-fit: cover; }
+  .post-grid { display: grid; gap: var(--gutter); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .post-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .post-links { background: color-mix(in srgb, var(--bone) 84%, var(--sand)); }
+</style>

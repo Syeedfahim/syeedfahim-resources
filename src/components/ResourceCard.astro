@@ -1,0 +1,64 @@
+---
+import { categoryLabel, isNew, postBySlug, type Resource } from '../lib/data';
+import Icon from './Icon.astro';
+interface Props { r: Resource; featured?: boolean; showPost?: boolean; index?: number }
+const { r, featured = false, showPost = true, index } = Astro.props;
+const fresh = isNew(r.date_added);
+const post = showPost ? postBySlug(r.post_slug) : undefined;
+const host = new URL(r.url).hostname.replace(/^www\./, '');
+---
+<article class:list={['card', { 'card--featured': featured }]}>
+  <div class="card__top">
+    <span class="card__cat">{index !== undefined && <span class="card__num serif">{String(index + 1).padStart(2, '0')}</span>}{categoryLabel(r.category)}</span>
+    {fresh && <span class="badge badge-new">New</span>}
+  </div>
+  <h3 class="card__name">{r.name}</h3>
+  <p class="card__why">{r.description}</p>
+  <div class="card__meta">
+    {r.licence_url
+      ? <a class="badge badge-licence" href={r.licence_url} target="_blank" rel="noopener" title="Read the licence">Free · {r.licence}</a>
+      : <span class="badge badge-licence">Free · {r.licence}</span>}
+    {post && <a class="card__from" href={`/p/${post.slug}/`}>From: {post.title}</a>}
+  </div>
+  <a class="btn card__go" href={r.url} target="_blank" rel="noopener">
+    Get it on {host} <Icon name="arrow-up-right" /><span class="sr-only">(opens in a new tab)</span>
+  </a>
+</article>
+
+<style>
+  .card {
+    position: relative; display: flex; flex-direction: column; gap: var(--s-3);
+    padding: var(--s-5); border-radius: var(--radius-l); background: var(--bone); color: var(--ink);
+    border: 1px solid var(--line-light); min-height: 260px;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -28px rgb(10 40 63 / 0.45); }
+  .card__top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
+  .card__cat { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocean); display: inline-flex; gap: var(--s-2); align-items: baseline; }
+  .card__num { font-size: 1.5rem; letter-spacing: 0; text-transform: none; color: var(--bronze); line-height: 1; }
+  .card__name { font-size: var(--step-2); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin-top: auto; padding-top: var(--s-5); }
+  .card__why { color: var(--slate); max-width: 46ch; }
+  .card__meta { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); align-items: center; font-size: 0.8125rem; }
+  .card__meta .badge-licence { --line: var(--line-light); --muted: var(--slate); text-decoration: none; }
+  .card__meta .badge-licence:hover { border-color: var(--slate); }
+  .card__from { color: var(--slate); text-underline-offset: 3px; }
+  .card__go { margin-top: var(--s-2); background: var(--ink); color: var(--bone); align-self: flex-start; }
+  .card__go:hover { background: var(--ocean); }
+
+  .card--featured {
+    background: var(--midnight); color: var(--bone); border-color: transparent; overflow: hidden; isolation: isolate;
+  }
+  .card--featured::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: radial-gradient(70% 60% at 90% 0%, rgb(81 134 179 / 0.55), transparent 70%);
+  }
+  .card--featured .card__cat { color: var(--sand); }
+  .card--featured .card__num { color: var(--sand); }
+  .card--featured .card__name { font-size: var(--step-4); }
+  .card--featured .card__why { color: var(--on-dark-muted); font-size: var(--step-1); }
+  .card--featured .card__meta .badge-licence { --line: var(--line-dark); --muted: var(--on-dark-muted); }
+  .card--featured .card__meta .badge-licence:hover { border-color: var(--bone); }
+  .card--featured .card__from { color: var(--on-dark-muted); }
+  .card--featured .card__go { background: var(--sand); color: var(--ink); }
+  .card--featured .card__go:hover { background: var(--bone); }
+</style>

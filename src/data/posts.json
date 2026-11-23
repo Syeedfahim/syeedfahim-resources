@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "designer-starter-kit",
+    "date": "2026-11-24",
+    "title": "6 free resources every designer should save",
+    "hook": "One AI tool, one prompt library, one GitHub repo, one font, one texture library and one Figma plugin — all free, all from official sources.",
+    "cover": "/posts/2026-11-24/01.jpg",
+    "slides": [
+      "/posts/2026-11-24/01.jpg",
+      "/posts/2026-11-24/02.jpg",
+      "/posts/2026-11-24/03.jpg",
+      "/posts/2026-11-24/04.jpg",
+      "/posts/2026-11-24/05.jpg",
+      "/posts/2026-11-24/06.jpg",
+      "/posts/2026-11-24/07.jpg",
+      "/posts/2026-11-24/08.jpg"
+    ],
+    "resources": ["upscayl", "prompts-chat", "designer-skills", "inter", "poly-haven-textures", "lucide-figma"]
+  }
+]

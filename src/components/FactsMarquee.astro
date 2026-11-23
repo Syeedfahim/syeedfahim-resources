@@ -1,0 +1,33 @@
+---
+import { resources, posts } from '../lib/data';
+// Real numbers only: counts are computed from the data files at build time.
+const facts = [
+  `${resources.length} free resource${resources.length === 1 ? '' : 's'}`,
+  `${posts.length} post${posts.length === 1 ? '' : 's'} and counting`,
+  '1M monthly views on Pinterest',
+  'New every day',
+];
+const row = [...facts, ...facts];
+---
+<section class="facts" aria-label="At a glance">
+  <ul class="sr-only">{facts.map((f) => <li>{f}</li>)}</ul>
+  <div class="marquee" style="--dur:38s" aria-hidden="true">
+    {[0, 1].map(() => (
+      <div class="marquee__track">
+        {row.map((f) => (
+          <span class="facts__item">{f}<span class="facts__sep">✦</span></span>
+        ))}
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .facts { background: var(--sand); color: var(--ink); padding-block: var(--s-4); border-block: 1px solid rgb(5 7 9 / 0.1); }
+  .facts__item {
+    display: inline-flex; align-items: center; gap: var(--s-5); padding-right: var(--s-5); white-space: nowrap;
+    font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem); font-weight: 750; letter-spacing: -0.03em;
+  }
+  .facts__item:nth-child(2n) { font-family: var(--font-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.3rem); }
+  .facts__sep { font-size: 0.6em; color: var(--ocean); font-style: normal; }
+</style>

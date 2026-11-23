@@ -1,0 +1,47 @@
+---
+import { SITE } from '../lib/data';
+import Icon from './Icon.astro';
+const steps = [
+  { icon: 'message', title: 'Comment “LINK”', body: 'On any of my daily Instagram carousels.' },
+  { icon: 'send', title: 'Get the DM', body: 'I send you the page with every official link from that post.' },
+  { icon: 'bookmark', title: 'Save the post', body: 'So the list is always there when you need it.' },
+] as const;
+---
+<section class="section theme-light dm" id="dm" aria-labelledby="dm-title">
+  <div class="container">
+    <div class="dm__head">
+      <p class="eyebrow">How it works</p>
+      <h2 id="dm-title" class="h-1">Get every link <span class="serif">in your DM.</span></h2>
+    </div>
+    <ol class="dm__steps">
+      {steps.map((s, i) => (
+        <li class="dm__step">
+          <span class="dm__n serif" aria-hidden="true">{i + 1}</span>
+          <span class="dm__icon"><Icon name={s.icon} /></span>
+          <h3 class="h-3">{s.title}</h3>
+          <p>{s.body}</p>
+        </li>
+      ))}
+    </ol>
+    <div class="dm__cta">
+      <a class="btn btn-primary" href={SITE.instagram} target="_blank" rel="noopener"><Icon name="instagram" /> Follow {SITE.instagramHandle}</a>
+      <p class="muted">A new carousel drops every day.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .dm__head { text-align: center; display: grid; gap: var(--s-4); justify-items: center; }
+  .dm__head .serif { color: var(--ocean); }
+  .dm__steps { list-style: none; padding: 0; margin-top: var(--s-7); display: grid; gap: var(--gutter); counter-reset: s; }
+  @media (min-width: 800px) { .dm__steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .dm__step {
+    position: relative; padding: var(--s-6) var(--s-5) var(--s-5); border-radius: var(--radius-l);
+    border: 1px solid var(--line-light); display: grid; gap: var(--s-2); overflow: hidden;
+  }
+  .dm__step p { color: var(--slate); }
+  .dm__n { position: absolute; right: var(--s-4); top: -0.15em; font-size: 7rem; line-height: 1; color: rgb(150 111 98 / 0.28); }
+  .dm__icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--midnight); color: var(--sand); margin-bottom: var(--s-3); }
+  .dm__icon :global(svg) { width: 22px; height: 22px; }
+  .dm__cta { margin-top: var(--s-7); display: grid; justify-items: center; gap: var(--s-3); text-align: center; }
+</style>

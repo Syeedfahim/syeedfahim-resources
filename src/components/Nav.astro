@@ -1,0 +1,85 @@
+---
+import { SITE } from '../lib/data';
+import Icon from './Icon.astro';
+const links = [
+  { href: '/#resources', label: 'Resources' },
+  { href: '/#prompts', label: 'Prompts' },
+  { href: '/#github', label: 'GitHub' },
+  { href: '/#fonts', label: 'Fonts' },
+  { href: '/#about', label: 'About' },
+];
+---
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <a class="nav__brand" href="/" aria-label="Syeed Fahim — home">Syeed <span class="serif">Fahim</span></a>
+    <nav aria-label="Main">
+      <ul class="nav__links" id="nav-links">
+        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        <li class="nav__cta-mobile"><a class="btn btn-primary" href={SITE.instagram} target="_blank" rel="noopener">Follow on Instagram</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary nav__cta" href={SITE.instagram} target="_blank" rel="noopener">
+      <Icon name="instagram" /> Follow on Instagram
+    </a>
+    <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>
+      <span class="sr-only">Menu</span><span aria-hidden="true" class="nav__bars"></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed; inset: 0 0 auto; z-index: 50;
+    background: rgb(5 7 9 / 0.62); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
+    border-bottom: 1px solid var(--line-dark); color: var(--bone);
+  }
+  .nav__inner { display: flex; align-items: center; gap: var(--s-5); height: 68px; }
+  .nav__brand { font-weight: 800; letter-spacing: -0.03em; font-size: 1.2rem; text-decoration: none; margin-right: auto; }
+  .nav__brand .serif { font-weight: 400; color: var(--sand); font-size: 1.15em; }
+  .nav__links { list-style: none; padding: 0; display: none; gap: var(--s-1); }
+  .nav__links a:not(.btn) {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s-3);
+    text-decoration: none; font-size: 0.9375rem; font-weight: 500; color: var(--on-dark-muted); border-radius: 999px;
+    transition: color 0.2s;
+  }
+  .nav__links a:not(.btn):hover { color: var(--bone); }
+  .nav__cta { display: none; min-height: 42px; font-size: 0.9375rem; }
+  .nav__cta-mobile { display: none; }
+  .nav__toggle {
+    width: 44px; height: 44px; display: grid; place-items: center; border-radius: 999px;
+    border: 1px solid var(--line-dark); background: transparent; cursor: pointer;
+  }
+  .nav__bars, .nav__bars::before, .nav__bars::after { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.25s var(--ease-out); }
+  .nav__bars { position: relative; }
+  .nav__bars::before, .nav__bars::after { content: ''; position: absolute; left: 0; }
+  .nav__bars::before { top: -6px; } .nav__bars::after { top: 6px; }
+  [aria-expanded='true'] .nav__bars { background: transparent; }
+  [aria-expanded='true'] .nav__bars::before { transform: translateY(6px) rotate(45deg); }
+  [aria-expanded='true'] .nav__bars::after { transform: translateY(-6px) rotate(-45deg); }
+
+  @media (max-width: 959px) {
+    .nav__links.is-open {
+      display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0;
+      padding: var(--s-4) var(--margin) var(--s-6); background: var(--ink); border-bottom: 1px solid var(--line-dark);
+    }
+    .nav__links.is-open a:not(.btn) { font-size: var(--step-1); color: var(--bone); padding: 0; min-height: 52px; }
+    .nav__links.is-open .nav__cta-mobile { display: block; margin-top: var(--s-4); }
+  }
+  @media (min-width: 960px) {
+    .nav__links { display: flex; }
+    .nav__cta { display: inline-flex; }
+    .nav__toggle { display: none; }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const list = document.getElementById('nav-links');
+  const set = (open: boolean) => {
+    btn?.setAttribute('aria-expanded', String(open));
+    list?.classList.toggle('is-open', open);
+  };
+  btn?.addEventListener('click', () => set(btn.getAttribute('aria-expanded') !== 'true'));
+  list?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) set(false); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+</script>

@@ -1,0 +1,68 @@
+[
+  {
+    "id": "upscayl",
+    "name": "Upscayl",
+    "category": "ai-tools",
+    "description": "Upscale low-res images with AI on your own computer — free, offline, no account.",
+    "url": "https://upscayl.org",
+    "licence": "AGPL-3.0",
+    "licence_url": "https://github.com/upscayl/upscayl/blob/main/LICENSE",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "prompts-chat",
+    "name": "prompts.chat",
+    "category": "prompts",
+    "description": "A huge open library of ready-made AI prompts you can copy, remix and reuse.",
+    "url": "https://prompts.chat",
+    "licence": "CC0-1.0 (prompts)",
+    "licence_url": "https://github.com/f/prompts.chat/blob/main/LICENSE",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "designer-skills",
+    "name": "Designer Skills Pack",
+    "category": "github",
+    "description": "100+ Claude skills for design work — hierarchy, type scales, grids, critiques and more.",
+    "url": "https://github.com/Owl-Listener/designer-skills",
+    "licence": "MIT",
+    "licence_url": "https://github.com/Owl-Listener/designer-skills/blob/main/LICENSE",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "inter",
+    "name": "Inter",
+    "category": "fonts",
+    "description": "A sharp, highly legible grotesk built for screens, with a Display cut for big headlines.",
+    "url": "https://rsms.me/inter/",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "poly-haven-textures",
+    "name": "Poly Haven Textures",
+    "category": "textures-mockups",
+    "description": "High-res scanned textures (wood, stone, fabric, concrete) free for any project.",
+    "url": "https://polyhaven.com/textures",
+    "licence": "CC0",
+    "licence_url": "https://polyhaven.com/license",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "lucide-figma",
+    "name": "Lucide Icons for Figma",
+    "category": "figma-plugins",
+    "description": "Drop 1,500+ clean, consistent open-source icons straight into your Figma frames.",
+    "url": "https://www.figma.com/community/plugin/939567362549682242/Lucide-Icons",
+    "licence": "ISC",
+    "licence_url": "https://lucide.dev/license",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  }
+]

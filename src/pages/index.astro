@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import FactsMarquee from '../components/FactsMarquee.astro';
+import ResourceTabs from '../components/ResourceTabs.astro';
+import LatestDrops from '../components/LatestDrops.astro';
+import About from '../components/About.astro';
+import DmSteps from '../components/DmSteps.astro';
+import { SITE } from '../lib/data';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: Astro.site?.href,
+  author: { '@type': 'Person', name: SITE.author, sameAs: [SITE.instagram, SITE.linkedin] },
+};
+---
+<Base jsonLd={jsonLd}>
+  <Hero />
+  <FactsMarquee />
+  <ResourceTabs />
+  <LatestDrops />
+  <About />
+  <DmSteps />
+</Base>
