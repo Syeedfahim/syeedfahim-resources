@@ -5,6 +5,21 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# syeedfahim-resources.netlify.app is the short link to the resource hub.
+# Its home goes to the hub on the main site; old /p/<slug>/ DM links follow to the main site.
+# /posts/*.jpg images are NOT redirected, so image URLs on either address keep working.
+[[redirects]]
+  from = "https://syeedfahim-resources.netlify.app/"
+  to = "https://syeedfahim.netlify.app/resources/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://syeedfahim-resources.netlify.app/p/*"
+  to = "https://syeedfahim.netlify.app/p/:splat"
+  status = 301
+  force = true
+
 # Slide images must stay plain, public JPEGs (Instagram's publishing API fetches them).
 [[headers]]
   for = "/posts/*"
