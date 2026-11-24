@@ -1,26 +1,29 @@
 ---
-import { SITE } from '../lib/data';
 import Icon from './Icon.astro';
+const path = Astro.url.pathname;
 const links = [
-  { href: '/#resources', label: 'Resources' },
-  { href: '/#prompts', label: 'Prompts' },
-  { href: '/#github', label: 'GitHub' },
-  { href: '/#fonts', label: 'Fonts' },
+  { href: '/work/', label: 'Work', match: '/work' },
+  { href: '/#services', label: 'Services' },
+  { href: '/resources/', label: 'Free resources', match: '/resources' },
+  { href: '/#drops', label: 'Daily drops' },
   { href: '/#about', label: 'About' },
 ];
 ---
 <header class="nav" data-nav>
   <div class="container nav__inner">
-    <a class="nav__brand" href="/" aria-label="Syeed Fahim — home">Syeed <span class="serif">Fahim</span></a>
+    <a class="nav__brand" href="/" aria-label="Syeed Hossain Fahim — home">
+      <span class="nav__mark" aria-hidden="true">SH</span>
+      <span class="nav__name">Syeed Hossain Fahim<small>AI Visual Storyteller</small></span>
+    </a>
     <nav aria-label="Main">
       <ul class="nav__links" id="nav-links">
-        {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
-        <li class="nav__cta-mobile"><a class="btn btn-primary" href={SITE.instagram} target="_blank" rel="noopener">Follow on Instagram</a></li>
+        {links.map((l) => (
+          <li><a href={l.href} aria-current={l.match && path.startsWith(l.match) ? 'page' : undefined}>{l.label}</a></li>
+        ))}
+        <li class="nav__cta-mobile"><a class="btn btn-primary" href="/#contact">Let’s talk</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary nav__cta" href={SITE.instagram} target="_blank" rel="noopener" data-magnetic>
-      <Icon name="instagram" /> Follow on Instagram
-    </a>
+    <a class="btn btn-primary nav__cta" href="/#contact" data-magnetic>Let’s talk <Icon name="arrow-up-right" /></a>
     <button class="nav__toggle" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>
       <span class="sr-only">Menu</span><span aria-hidden="true" class="nav__bars"></span>
     </button>
@@ -28,30 +31,32 @@ const links = [
 </header>
 
 <style>
-  .nav {
-    position: fixed; inset: 0 0 auto; z-index: 50;
-    background: rgb(5 7 9 / 0.62); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2);
-    border-bottom: 1px solid var(--line-dark); color: var(--bone);
-    transition: transform 0.5s var(--ease-out), background-color 0.3s;
+  .nav { position: fixed; inset: 12px 0 auto; z-index: 50; transition: transform 0.5s var(--ease-out); pointer-events: none; }
+  .nav.nav--hidden { transform: translateY(-130%); }
+  .nav__inner {
+    pointer-events: auto; display: flex; align-items: center; gap: var(--s-4); height: 64px;
+    max-width: calc(var(--container) + var(--margin) * 2 - 2 * var(--margin)); width: calc(100% - 2 * var(--margin));
+    margin-inline: auto; padding: 0 8px 0 12px; border-radius: 999px;
+    background: rgb(6 16 31 / 0.6); border: 1px solid var(--border); backdrop-filter: blur(18px) saturate(1.3); -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    transition: background-color 0.3s, box-shadow 0.3s;
   }
-  .nav.nav--hidden { transform: translateY(-100%); }
-  .nav.nav--scrolled { background: rgb(5 7 9 / 0.8); }
-  .nav__inner { display: flex; align-items: center; gap: var(--s-5); height: 68px; }
-  .nav__brand { font-weight: 800; letter-spacing: -0.03em; font-size: 1.2rem; text-decoration: none; margin-right: auto; }
-  .nav__brand .serif { font-weight: 400; color: var(--sand); font-size: 1.15em; }
-  .nav__links { list-style: none; padding: 0; display: none; gap: var(--s-1); }
+  :global(.nav--scrolled) .nav__inner { background: rgb(6 16 31 / 0.85); box-shadow: 0 20px 50px -20px rgb(0 0 0 / 0.6); }
+  .nav__brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+  .nav__mark {
+    width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 0.85rem;
+    background: radial-gradient(circle at 30% 30%, var(--glow), var(--bg-blue)); box-shadow: 0 0 20px -4px var(--glow);
+  }
+  .nav__name { display: grid; font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; line-height: 1.15; }
+  .nav__name small { font-family: var(--font-sans); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .nav__links { list-style: none; padding: 0; display: none; gap: 2px; }
   .nav__links a:not(.btn) {
-    display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s-3);
-    text-decoration: none; font-size: 0.9375rem; font-weight: 500; color: var(--on-dark-muted); border-radius: 999px;
-    transition: color 0.2s;
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 999px;
+    text-decoration: none; font-size: 0.9rem; font-weight: 500; color: var(--text-soft); transition: color 0.2s, background-color 0.2s;
   }
-  .nav__links a:not(.btn):hover { color: var(--bone); }
-  .nav__cta { display: none; min-height: 42px; font-size: 0.9375rem; }
+  .nav__links a:not(.btn):hover, .nav__links a[aria-current='page'] { color: var(--text); background: var(--glass-hover); }
+  .nav__cta { display: none; min-height: 46px; }
   .nav__cta-mobile { display: none; }
-  .nav__toggle {
-    width: 44px; height: 44px; display: grid; place-items: center; border-radius: 999px;
-    border: 1px solid var(--line-dark); background: transparent; cursor: pointer;
-  }
+  .nav__toggle { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--border-strong); background: transparent; cursor: pointer; }
   .nav__bars, .nav__bars::before, .nav__bars::after { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; transition: transform 0.25s var(--ease-out); }
   .nav__bars { position: relative; }
   .nav__bars::before, .nav__bars::after { content: ''; position: absolute; left: 0; }
@@ -59,16 +64,17 @@ const links = [
   [aria-expanded='true'] .nav__bars { background: transparent; }
   [aria-expanded='true'] .nav__bars::before { transform: translateY(6px) rotate(45deg); }
   [aria-expanded='true'] .nav__bars::after { transform: translateY(-6px) rotate(-45deg); }
-
-  @media (max-width: 959px) {
+  @media (max-width: 479px) { .nav__name small { display: none; } .nav__name { font-size: 0.85rem; } }
+  @media (max-width: 1079px) {
     .nav__links.is-open {
-      display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0;
-      padding: var(--s-4) var(--margin) var(--s-6); background: var(--ink); border-bottom: 1px solid var(--line-dark);
+      display: flex; flex-direction: column; position: absolute; top: 74px; left: var(--margin); right: var(--margin);
+      padding: var(--s-4); border-radius: var(--radius-l); background: rgb(6 16 31 / 0.97); border: 1px solid var(--border); box-shadow: var(--shadow);
     }
-    .nav__links.is-open a:not(.btn) { font-size: var(--step-1); color: var(--bone); padding: 0; min-height: 52px; }
-    .nav__links.is-open .nav__cta-mobile { display: block; margin-top: var(--s-4); }
+    .nav__links.is-open a:not(.btn) { font-size: var(--step-1); color: var(--text); min-height: 52px; }
+    .nav__links.is-open .nav__cta-mobile { display: block; margin-top: var(--s-3); }
+    .nav__links.is-open .nav__cta-mobile .btn { width: 100%; }
   }
-  @media (min-width: 960px) {
+  @media (min-width: 1080px) {
     .nav__links { display: flex; }
     .nav__cta { display: inline-flex; }
     .nav__toggle { display: none; }

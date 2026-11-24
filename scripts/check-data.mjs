@@ -18,7 +18,7 @@ const posts = load('src/data/posts.json');
 const ids = new Set();
 for (const r of resources) {
   const where = `resource "${r.id ?? '?'}"`;
-  for (const k of ['id', 'name', 'category', 'description', 'url', 'licence', 'date_added', 'post_slug'])
+  for (const k of ['id', 'name', 'category', 'description', 'url', 'licence', 'date_added'])
     if (!r[k] || typeof r[k] !== 'string') err(`${where}: missing "${k}"`);
   if (ids.has(r.id)) err(`${where}: duplicate id`);
   ids.add(r.id);
@@ -45,7 +45,7 @@ for (const p of posts) {
   }
   for (const id of p.resources ?? []) if (!ids.has(id)) err(`${where}: resource id "${id}" is not in resources.json`);
 }
-for (const r of resources) if (r.post_slug && !slugs.has(r.post_slug)) err(`resource "${r.id}": post_slug "${r.post_slug}" is not in posts.json`);
+for (const r of resources) if (r.post_slug !== undefined && !slugs.has(r.post_slug)) err(`resource "${r.id}": post_slug "${r.post_slug}" is not in posts.json`);
 
 if (errors.length) {
   console.error(`\n✖ Data check failed (${errors.length}):\n  - ` + errors.join('\n  - ') + '\n');

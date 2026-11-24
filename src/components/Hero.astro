@@ -1,5 +1,6 @@
 ---
 import { posts, thumb, formatDate } from '../lib/data';
+import { PROFILE } from '../data/work';
 import Icon from './Icon.astro';
 
 // Fill the ring with slides from the latest posts (newest first), 8–12 cards.
@@ -15,149 +16,171 @@ cards = cards.slice(0, 12);
 while (cards.length > 0 && cards.length < 8) cards = cards.concat(cards).slice(0, 8);
 const latest = posts[0];
 ---
-<section class="hero theme-dark grain" aria-labelledby="hero-title">
-  <div class="hero__glow" aria-hidden="true" data-parallax="0.25"></div>
-  <div class="container hero__grid">
-    <div class="hero__copy">
-      <p class="hero__hi hero__in" style="--d:0">
-        <img src="/images/me/avatar.webp" alt="" width="40" height="40" />
-        <span>Curated by <strong>Syeed Fahim</strong> · new every day</span>
-      </p>
-      <h1 id="hero-title" class="h-display hero__title">
-        <span class="line"><span class="hero__in" style="--d:1">Free resources</span></span>
-        <span class="line"><span class="hero__in" style="--d:2">for designers,</span></span>
-        <span class="line"><span class="hero__in serif" style="--d:3">every single day.</span></span>
-      </h1>
-      <p class="lede hero__in hero__lede" style="--d:4">
-        AI tools, prompts, GitHub repos, fonts, textures and Figma plugins — hand-picked, free, and linked straight to the official source.
-      </p>
-      <div class="hero__ctas hero__in" style="--d:5">
-        <a class="btn btn-primary" href="#resources" data-magnetic>Browse resources <Icon name="arrow-right" /></a>
-        {latest && <a class="btn btn-ghost" href={`/p/${latest.slug}/`} data-magnetic>Today’s drop</a>}
-      </div>
-    </div>
-
-    <figure class="hero__me hero__pop" aria-hidden="true" data-parallax="-0.12">
-      <picture>
-        <source srcset="/images/me/hero.webp" type="image/webp" />
-        <img src="/images/me/hero.jpg" alt="" width="720" height="900" fetchpriority="high" />
-      </picture>
-      <figcaption class="hero__tag hero__tag--a"><span class="dot"></span> Posting daily on Instagram</figcaption>
-      <figcaption class="hero__tag hero__tag--b"><span class="serif">1M</span> monthly Pinterest views</figcaption>
-    </figure>
+<!-- Header from syeedfahim.netlify.app: big portrait behind the title, moves gently with the mouse -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__orb hero__orb--1" aria-hidden="true" data-orb="1"></div>
+  <div class="hero__orb hero__orb--2" aria-hidden="true" data-orb="2"></div>
+  <div class="hero__img hero__pop" aria-hidden="true" data-hero-img>
+    <picture>
+      <source media="(max-width: 900px)" srcset="/images/me/hero-wide-m.webp" />
+      <img src="/images/me/hero-wide.webp" alt="" width="2200" height="1365" fetchpriority="high" />
+    </picture>
   </div>
+  <div class="hero__fog" aria-hidden="true"></div>
 
-  {cards.length > 0 && (
-    <div class="spin" data-spin>
-      <div
-        class="spin__stage"
-        tabindex="0"
-        role="region"
-        aria-roledescription="carousel"
-        aria-label="Latest post covers. Drag, or use the left and right arrow keys to spin. Press Enter to open the post at the front."
-        data-stage
-      >
-        <div class="spin__ring" data-ring style={`--n:${cards.length}`}>
-          {cards.map((c, i) => (
-            <a class="spin__card" href={c.href} tabindex="-1" style={`--i:${i}`} draggable="false" data-card>
-              <img src={c.src} alt={c.alt} width="480" height="600" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" draggable="false" />
-            </a>
-          ))}
-        </div>
-      </div>
-      <p class="spin__hint" aria-hidden="true"><span class="spin__dot"></span> Drag to spin</p>
+  <div class="container hero__content">
+    <div class="hero__left">
+      <p class="hero__eyebrow hero__in" style="--d:0"><span class="pulse"></span> Available for Work · Dhaka</p>
+      <h1 id="hero-title" class="hero__title">
+        <span class="line"><span class="hero__in" style="--d:1">Visual <span class="shimmer">Storyteller</span></span></span>
+        <span class="line"><span class="hero__in" style="--d:2">&amp; Content Developer</span></span>
+      </h1>
     </div>
-  )}
+    <div class="hero__right hero__in" style="--d:4">
+      <p>I’m <strong>Syeed Hossain Fahim</strong> — blending design and content development. Currently serving as Content Developer at <strong>lustmanager.com</strong>, while exploring the intersection of AI, visuals and storytelling — and sharing free design resources every day.</p>
+      <div class="hero__ctas">
+        <a class="btn btn-primary" href="/work/" data-magnetic>View Work <Icon name="arrow-right" /></a>
+        <a class="btn btn-ghost" href="/resources/" data-magnetic>Free resources</a>
+        <a class="btn btn-ghost" href={PROFILE.linkedin} target="_blank" rel="noopener">LinkedIn <Icon name="linkedin" /></a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span></span> Scroll</div>
 </section>
 
+{cards.length > 0 && (
+  <section class="spin" data-spin aria-labelledby="spin-title">
+    <div class="container spin__label">
+      <h2 id="spin-title" class="eyebrow">Today’s free drops</h2>
+      <a href={latest ? `/p/${latest.slug}/` : '/resources/'}>Open the latest post →</a>
+    </div>
+    <div
+      class="spin__stage"
+      tabindex="0"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Latest post covers. Drag, or use the left and right arrow keys to spin. Press Enter to open the post at the front."
+      data-stage
+    >
+      <div class="spin__ring" data-ring style={`--n:${cards.length}`}>
+        {cards.map((c, i) => (
+          <a class="spin__card" href={c.href} tabindex="-1" style={`--i:${i}`} draggable="false" data-card>
+            <img src={c.src} alt={c.alt} width="480" height="600" loading={i < 3 ? 'eager' : 'lazy'} decoding="async" draggable="false" />
+          </a>
+        ))}
+      </div>
+    </div>
+    <p class="spin__hint" aria-hidden="true"><span class="spin__dot"></span> Drag to spin</p>
+  </section>
+)}
+
 <style>
-  .hero { padding-top: calc(68px + clamp(2rem, 1rem + 4vw, 5rem)); padding-bottom: var(--s-7); overflow: hidden; position: relative; isolation: isolate; }
-  .hero__glow {
-    position: absolute; inset: -10% 0; z-index: -1; pointer-events: none;
-    background:
-      radial-gradient(55% 45% at 78% 8%, rgb(81 134 179 / 0.5), transparent 70%),
-      radial-gradient(45% 40% at 6% 70%, rgb(24 74 106 / 0.95), transparent 70%),
-      radial-gradient(70% 40% at 50% 105%, rgb(81 134 179 / 0.35), transparent 70%);
+  .hero { position: relative; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 110px; padding-bottom: 64px; overflow: hidden; isolation: isolate; background: var(--bg); }
+  .hero__orb { position: absolute; border-radius: 50%; filter: blur(80px); z-index: 0; pointer-events: none; transition: transform 0.8s var(--ease-out); }
+  .hero__orb--1 { width: 520px; height: 520px; left: 50%; top: 5%; margin-left: -260px; background: rgb(10 61 143 / 0.75); }
+  .hero__orb--2 { width: 380px; height: 380px; right: -80px; top: 40%; background: rgb(67 56 202 / 0.25); }
+  .hero__img { position: absolute; top: 0; left: 50%; width: 100%; max-width: 1320px; height: 98vh; z-index: 1; pointer-events: none; translate: -50% 0; transition: transform 0.55s var(--ease-out); will-change: transform; }
+  .hero__img picture { display: block; width: 100%; height: 100%; }
+  .hero__img img {
+    width: 100%; height: 100%; object-fit: contain; object-position: center top;
+    filter: contrast(1.12) saturate(1.08) drop-shadow(0 18px 60px rgb(4 50 127 / 0.45));
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, rgb(0 0 0 / 0.88) 60%, rgb(0 0 0 / 0.5) 75%, rgb(0 0 0 / 0.15) 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 45%, rgb(0 0 0 / 0.88) 60%, rgb(0 0 0 / 0.5) 75%, rgb(0 0 0 / 0.15) 88%, transparent 100%);
   }
-  .hero__grid { display: grid; gap: var(--s-7); align-items: center; }
-  @media (min-width: 1100px) { .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(300px, 400px); gap: var(--s-8); } }
-
-  .hero__hi {
-    display: inline-flex; align-items: center; gap: var(--s-3); padding: 4px 16px 4px 4px; border-radius: 999px;
-    background: rgb(242 238 232 / 0.08); border: 1px solid var(--line-dark); font-size: 0.875rem; color: var(--on-dark-muted);
+  .hero__fog {
+    position: absolute; inset: auto 0 0; height: 380px; z-index: 2; pointer-events: none;
+    background: linear-gradient(to bottom, transparent 0%, rgb(3 7 18 / 0.2) 25%, rgb(3 7 18 / 0.72) 65%, var(--bg) 100%);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    -webkit-mask-image: linear-gradient(to top, #000 65%, transparent 100%); mask-image: linear-gradient(to top, #000 65%, transparent 100%);
   }
-  .hero__hi img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
-  .hero__hi strong { color: var(--bone); font-weight: 600; }
-  .hero__title { margin-top: var(--s-5); max-width: 12ch; }
-  .hero__title .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+  .hero__content { position: relative; z-index: 3; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 56px; align-items: end; }
+  .hero__eyebrow {
+    display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; margin-bottom: 22px; border-radius: 999px;
+    background: rgb(255 255 255 / 0.05); border: 1px solid var(--border); font-size: 0.75rem; letter-spacing: 0.05em; color: var(--muted);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  }
+  .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); animation: pulse 2.2s infinite; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgb(74 222 128 / 0.55); } 70% { box-shadow: 0 0 0 11px rgb(74 222 128 / 0); } 100% { box-shadow: 0 0 0 0 rgb(74 222 128 / 0); } }
+  .hero__title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.75rem, 6.6vw, 5.4rem); line-height: 1.02; letter-spacing: -0.04em; }
+  .hero__title .line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
   .hero__title .line > span { display: inline-block; }
-  .hero__title .serif { color: var(--sand); font-size: 1.04em; letter-spacing: -0.02em; }
-  .hero__lede { margin-top: var(--s-5); }
-  .hero__ctas { margin-top: var(--s-5); display: flex; flex-wrap: wrap; gap: var(--s-3); }
-
-  /* Portrait card */
-  .hero__me { position: relative; display: none; margin: 0; }
-  @media (min-width: 1100px) { .hero__me { display: block; } }
-  .hero__me picture { display: block; border-radius: var(--radius-l); overflow: hidden; aspect-ratio: 4 / 5; transform: rotate(2.5deg); box-shadow: 0 50px 90px -40px rgb(5 7 9 / 0.9), 0 0 0 1px rgb(242 238 232 / 0.1); }
-  .hero__me img { width: 100%; height: 100%; object-fit: cover; }
-  .hero__tag {
-    position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
-    font-size: 0.875rem; font-weight: 600; white-space: nowrap; box-shadow: 0 20px 40px -20px rgb(5 7 9 / 0.8);
-    animation: bob 5s ease-in-out infinite;
+  .shimmer {
+    background: linear-gradient(120deg, #fff 0%, #9bb6ff 35%, #7aa2ff 55%, #fff 80%, #5b8cff 100%); background-size: 250% auto;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 8s linear infinite;
   }
-  .hero__tag--a { left: -48px; top: 14%; background: var(--bone); color: var(--ink); }
-  .hero__tag--b { right: -28px; bottom: 12%; background: var(--sand); color: var(--ink); animation-delay: -2.5s; }
-  .hero__tag--b .serif { font-size: 1.25rem; }
-  .hero__tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--steel); box-shadow: 0 0 0 4px rgb(81 134 179 / 0.25); }
-  @keyframes bob { 50% { transform: translateY(-10px); } }
+  @keyframes shimmer { to { background-position: 250% center; } }
+  .hero__right p { font-size: 1.03rem; color: var(--muted); line-height: 1.85; margin-bottom: 28px; font-weight: 300; }
+  .hero__right strong { color: var(--text); font-weight: 500; }
+  .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero__scroll { position: absolute; right: var(--margin); bottom: 28px; z-index: 3; display: flex; align-items: center; gap: 10px; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+  .hero__scroll span { width: 18px; height: 28px; border: 1.5px solid var(--border-strong); border-radius: 10px; position: relative; }
+  .hero__scroll span::after { content: ''; position: absolute; left: 50%; top: 5px; width: 2px; height: 6px; margin-left: -1px; border-radius: 2px; background: var(--text); animation: wheel 1.8s ease-in-out infinite; }
+  @keyframes wheel { 60% { transform: translateY(8px); opacity: 0; } }
 
-  /* Orchestrated entrance — waits for the preloader (html.is-ready) */
-  .hero__in { animation: rise 1s var(--ease-out) both paused; animation-delay: calc(var(--d) * 90ms + 60ms); }
+  @media (max-width: 900px) {
+    .hero { min-height: auto; padding-top: 96px; padding-bottom: 40px; }
+    .hero__img { position: relative; top: 0; left: 0; translate: none; transform: none !important; width: 100%; height: 62vh; margin: 0 auto -60px; }
+    .hero__img img { object-fit: cover; }
+    .hero__fog { height: 220px; }
+    .hero__content { grid-template-columns: 1fr; gap: 24px; }
+    .hero__scroll { display: none; }
+  }
+
+  /* Entrance (after the preloader) */
+  .hero__in { animation: rise 1s var(--ease-out) both paused; animation-delay: calc(var(--d) * 110ms + 250ms); }
   .hero__title .hero__in { animation-name: rise-line; animation-duration: 1.2s; }
+  .hero__pop { animation: pop 1.6s var(--ease-out) both paused; }
   :global(html.is-ready) .hero__in, :global(html.is-ready) .hero__pop, :global(html.is-ready) .spin__stage { animation-play-state: running; }
   @keyframes rise { from { opacity: 0; transform: translateY(24px); filter: blur(6px); } }
   @keyframes rise-line { from { transform: translateY(110%) rotate(2deg); } }
-  .hero__pop { animation: pop 1.4s var(--ease-out) 0.35s both paused; }
-  @keyframes pop { from { opacity: 0; transform: translateY(70px) scale(0.88) rotate(6deg); } }
-  .hero__me .hero__tag { opacity: 0; }
-  :global(html.is-ready) .hero__me .hero__tag { opacity: 1; transition: opacity 0.8s 1.3s; }
+  @keyframes pop { from { opacity: 0; scale: 1.08; filter: blur(10px); } }
 
-  .spin { margin-top: clamp(1rem, 0rem + 3vw, 3rem); position: relative; }
+  /* 3D carousel of the latest post slides */
+  .spin { position: relative; z-index: 2; background: var(--bg); padding: var(--s-4) 0 var(--s-6); margin-top: -24px; overflow-x: clip; }
+  .spin__label { display: flex; justify-content: space-between; align-items: center; gap: var(--s-4); }
+  .spin__label a { color: var(--accent); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+  .spin__label a:hover { text-decoration: underline; }
   .spin__stage {
     --w: 150px;
-    height: calc(var(--w) * 1.25 + 120px);
-    perspective: 1600px; perspective-origin: 50% 30%;
+    height: calc(var(--w) * 1.25 * 1.5 + 40px);
+    perspective: 1600px; perspective-origin: 50% 45%;
     display: grid; place-items: center; cursor: grab; touch-action: pan-y; outline-offset: -4px;
     animation: ring-in 1.8s var(--ease-out) 0.5s both paused;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
   }
   .spin__stage:active { cursor: grabbing; }
   @keyframes ring-in { from { opacity: 0; transform: translateY(90px) scale(0.45); } }
-  .spin__ring {
-    position: relative; width: var(--w); aspect-ratio: 4 / 5; transform-style: preserve-3d;
-    transform: rotateX(-6deg) rotateY(var(--a, 0deg));
-  }
+  .spin__ring { position: relative; width: var(--w); aspect-ratio: 4 / 5; transform-style: preserve-3d; transform: rotateX(-3deg) rotateY(var(--a, 0deg)); }
   .spin__card {
     position: absolute; inset: 0; border-radius: var(--radius-m); overflow: hidden;
     transform: rotateY(calc(var(--i) * 360deg / var(--n))) translateZ(var(--r, 300px));
-    box-shadow: 0 30px 60px -20px rgb(5 7 9 / 0.8), 0 0 0 1px rgb(242 238 232 / 0.08);
-    background: var(--midnight); -webkit-user-drag: none; user-select: none;
-    backface-visibility: hidden;
+    box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.8), 0 0 0 1px rgb(255 255 255 / 0.1);
+    background: var(--bg-deep); -webkit-user-drag: none; user-select: none; backface-visibility: hidden;
   }
   .spin__card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-  .spin__hint {
-    display: flex; align-items: center; justify-content: center; gap: var(--s-2);
-    font-size: var(--step--1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-muted); font-weight: 600;
-  }
-  .spin__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sand); box-shadow: 0 0 0 4px rgb(221 173 159 / 0.2); animation: pulse 1.8s ease-in-out infinite; }
-  @keyframes pulse { 50% { box-shadow: 0 0 0 9px rgb(221 173 159 / 0); } }
-  @media (min-width: 600px) { .spin__stage { --w: 190px; } }
-  @media (min-width: 1100px) { .spin__stage { --w: 220px; perspective: 2200px; } }
+  .spin__hint { display: flex; align-items: center; justify-content: center; gap: var(--s-2); font-size: var(--step--1); letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-soft); font-weight: 600; }
+  .spin__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--glow); box-shadow: 0 0 0 4px rgb(91 140 255 / 0.25); animation: dot 1.8s ease-in-out infinite; }
+  @keyframes dot { 50% { box-shadow: 0 0 0 9px rgb(91 140 255 / 0); } }
+  @media (min-width: 600px) { .spin__stage { --w: 180px; } }
+  @media (min-width: 1100px) { .spin__stage { --w: 200px; perspective: 2200px; } }
 </style>
 
 <script>
   import { motionOn, onReady } from '../scripts/motion-state';
+
+  // Header portrait + glow orbs drift with the mouse (desktop), like the original portfolio.
+  const heroImg = document.querySelector<HTMLElement>('[data-hero-img]');
+  const orbs = document.querySelectorAll<HTMLElement>('[data-orb]');
+  if (heroImg && motionOn() && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+      if (innerWidth <= 900) return;
+      const x = (e.clientX / innerWidth - 0.5) * 2;
+      const y = (e.clientY / innerHeight - 0.5) * 2;
+      heroImg.style.transform = `translate(${(x * -10).toFixed(1)}px, ${(y * -8).toFixed(1)}px)`;
+      orbs.forEach((o, i) => { o.style.transform = `translate(${(x * (i + 1) * 16).toFixed(1)}px, ${(y * (i + 1) * 16).toFixed(1)}px)`; });
+    });
+  }
 
   const stage = document.querySelector<HTMLElement>('[data-stage]');
   const ring = document.querySelector<HTMLElement>('[data-ring]');
@@ -166,7 +189,7 @@ const latest = posts[0];
     const n = cards.length;
     const step = 360 / n;
     const idle = () => (!motionOn() || document.activeElement === stage ? 0 : -0.012); // deg/ms drift; pauses while focused
-    let angle = motionOn() ? 200 : 0; // entrance: swings in from the side
+    let angle = motionOn() ? 200 : 0;
     let vel = 0;
     let dragging = false, moved = 0, lastX = 0, lastT = 0, raf = 0, prev = performance.now();
     let visible = true;
@@ -182,7 +205,7 @@ const latest = posts[0];
     const paint = () => {
       ring.style.setProperty('--a', angle + 'deg');
       for (let i = 0; i < n; i++) {
-        const rel = ((i * step + angle) % 360 + 540) % 360 - 180; // −180..180, 0 = front
+        const rel = ((i * step + angle) % 360 + 540) % 360 - 180;
         const f = Math.cos((rel * Math.PI) / 180);
         cards[i].style.filter = `brightness(${(0.45 + 0.55 * Math.max(f, 0)).toFixed(3)})`;
       }
@@ -195,27 +218,18 @@ const latest = posts[0];
       }
       return best;
     };
-
     const tick = (t: number) => {
       const dt = Math.min(48, t - prev); prev = t;
-      if (!dragging) {
-        vel += (idle() - vel) * Math.min(1, dt * 0.0016); // ease toward idle drift
-        angle += vel * dt;
-      }
+      if (!dragging) { vel += (idle() - vel) * Math.min(1, dt * 0.0016); angle += vel * dt; }
       paint();
       raf = visible ? requestAnimationFrame(tick) : 0;
     };
     const start = () => { if (!raf) { prev = performance.now(); raf = requestAnimationFrame(tick); } };
     paint();
-    // Spin-in starts with the hero entrance, after the preloader.
     onReady(() => { if (motionOn()) vel = -0.6; start(); });
-
     new IntersectionObserver(([e]) => { visible = e.isIntersecting; if (visible && document.documentElement.classList.contains('is-ready')) start(); }).observe(stage);
 
-    stage.addEventListener('pointerdown', (e) => {
-      dragging = true; moved = 0; lastX = e.clientX; lastT = performance.now(); vel = 0;
-      stage.setPointerCapture(e.pointerId);
-    });
+    stage.addEventListener('pointerdown', (e) => { dragging = true; moved = 0; lastX = e.clientX; lastT = performance.now(); vel = 0; stage.setPointerCapture(e.pointerId); });
     stage.addEventListener('pointermove', (e) => {
       if (!dragging) return;
       const now = performance.now();
@@ -230,15 +244,12 @@ const latest = posts[0];
     stage.addEventListener('pointerup', end);
     stage.addEventListener('pointercancel', end);
     ring.addEventListener('click', (e) => { if (moved > 6) { e.preventDefault(); moved = 0; } }, true);
-
     stage.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
         e.preventDefault();
         angle = Math.round(angle / step) * step + (e.key === 'ArrowLeft' ? step : -step);
         vel = 0; paint();
-      } else if (e.key === 'Enter') {
-        cards[frontIndex()].click();
-      }
+      } else if (e.key === 'Enter') { cards[frontIndex()].click(); }
     });
   }
 </script>

@@ -2,7 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import ResourceCard from '../../components/ResourceCard.astro';
 import LatestDrops from '../../components/LatestDrops.astro';
-import DmSteps from '../../components/DmSteps.astro';
+import DmStrip from '../../components/DmStrip.astro';
+import Contact from '../../components/Contact.astro';
 import Icon from '../../components/Icon.astro';
 import { posts, resourceById, thumb, formatDate, SITE, type Post } from '../../lib/data';
 
@@ -36,7 +37,7 @@ const jsonLd = {
   publishedTime={post.date}
   jsonLd={jsonLd}
 >
-  <section class="post-hero theme-dark grain" aria-labelledby="post-title">
+  <section class="post-hero theme-ink grain" aria-labelledby="post-title">
     <div class="post-hero__glow" aria-hidden="true"></div>
     <div class="container">
       <p class="eyebrow"><a href="/#drops">Latest drops</a> · <time datetime={post.date}>{formatDate(post.date)}</time></p>
@@ -75,13 +76,14 @@ const jsonLd = {
     </div>
   </section>
 
-  <DmSteps />
+  <DmStrip />
   <LatestDrops exclude={post.slug} title="More drops" />
+  <Contact />
 </Base>
 
 <style>
-  .post-hero { padding-top: calc(68px + clamp(2.5rem, 2rem + 4vw, 6rem)); padding-bottom: var(--s-7); position: relative; overflow: hidden; isolation: isolate; }
-  .post-hero__glow { position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 50% at 85% 0%, rgb(81 134 179 / 0.5), transparent 70%), radial-gradient(40% 50% at 0% 90%, rgb(24 74 106 / 0.9), transparent 70%); }
+  .post-hero { padding-top: calc(100px + clamp(2.5rem, 2rem + 4vw, 6rem)); padding-bottom: var(--s-7); position: relative; overflow: hidden; isolation: isolate; }
+  .post-hero__glow { position: absolute; inset: 0; z-index: -1; background: radial-gradient(50% 60% at 85% 0%, rgb(10 61 143 / 0.85), transparent 70%), radial-gradient(30% 40% at 90% 10%, rgb(91 140 255 / 0.3), transparent 70%); }
   .post-hero .eyebrow a { text-underline-offset: 3px; }
   .post-hero__title { margin-top: var(--s-4); max-width: 18ch; }
   .post-hero__hook { margin-top: var(--s-5); max-width: 52ch; }
@@ -97,5 +99,5 @@ const jsonLd = {
   .post-grid { display: grid; gap: var(--gutter); grid-template-columns: 1fr; }
   @media (min-width: 700px) { .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (min-width: 1100px) { .post-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  .post-links { background: color-mix(in srgb, var(--bone) 84%, var(--sand)); }
+  .post-links { background: var(--bg); }
 </style>

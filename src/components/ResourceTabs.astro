@@ -1,48 +1,56 @@
 ---
 import { CATEGORIES, resources } from '../lib/data';
 import ResourceCard from './ResourceCard.astro';
+import Icon from './Icon.astro';
+
+interface Props { limit?: number; search?: boolean; heading?: boolean }
+const { limit, search = false, heading = true } = Astro.props;
 
 const tabs = [
   { key: 'all', label: 'All', items: resources },
   ...CATEGORIES.map((c) => ({ key: c.key, label: c.label, items: resources.filter((r) => r.category === c.key) })),
 ];
+const shown = (items: typeof resources) => (limit ? items.slice(0, limit) : items);
 ---
-<section class="section res grain" id="resources" aria-labelledby="res-title">
-  <!-- Hash targets for the nav (#prompts, #github, #fonts …) -->
-  {CATEGORIES.map((c) => <span id={c.key === 'github' ? 'github' : c.key === 'prompts' ? 'prompts' : c.key === 'fonts' ? 'fonts' : `cat-${c.key}`} class="res__anchor" aria-hidden="true"></span>)}
+<section class="section res" id="resources" aria-labelledby="res-title">
+  {CATEGORIES.map((c) => <span id={`cat-${c.key}`} class="res__anchor" aria-hidden="true"></span>)}
   <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">The library</p>
-        <h2 id="res-title" class="h-1" data-split>Every resource, <span class="serif">one tap away.</span></h2>
+    {heading && (
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" data-reveal>Free resource hub</p>
+          <h2 id="res-title" class="h-1" data-split>Every free tool I share, <span class="serif">one tap away.</span></h2>
+        </div>
+        <p class="muted" data-reveal>{resources.length} hand-picked resources. Each card says why it’s useful, shows the licence and links to the official source — never a re-upload.</p>
       </div>
-      <p class="muted measure" data-reveal>Each card says why it’s useful, shows its licence, and links to the official source — never a re-upload.</p>
-    </div>
+    )}
+    {!heading && <h2 id="res-title" class="sr-only">All resources</h2>}
 
-    <div class="tabs" data-reveal role="tablist" aria-label="Resource categories" data-tablist>
-      {tabs.map((t, i) => (
-        <button
-          role="tab"
-          class="tab"
-          id={`tab-${t.key}`}
-          aria-controls={`panel-${t.key}`}
-          aria-selected={i === 0 ? 'true' : 'false'}
-          tabindex={i === 0 ? 0 : -1}
-          data-tab={t.key}
-        >
-          {t.label} <span class="tab__count">{t.items.length}</span>
-        </button>
-      ))}
+    <div class="res__bar" data-reveal>
+      <div class="tabs" role="tablist" aria-label="Resource categories" data-tablist>
+        {tabs.map((t, i) => (
+          <button role="tab" class="tab" id={`tab-${t.key}`} aria-controls={`panel-${t.key}`} aria-selected={i === 0 ? 'true' : 'false'} tabindex={i === 0 ? 0 : -1} data-tab={t.key}>
+            {t.label} <span class="tab__count">{t.items.length}</span>
+          </button>
+        ))}
+      </div>
+      {search && (
+        <label class="search">
+          <span class="sr-only">Search resources</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="search" placeholder="Search: upscaler, Bangla font, icons…" data-search-input />
+        </label>
+      )}
     </div>
 
     {tabs.map((t, i) => (
       <div role="tabpanel" id={`panel-${t.key}`} aria-labelledby={`tab-${t.key}`} tabindex="0" class="panel" hidden={i !== 0}>
-        {t.items.length > 0 ? (
-          <div class="bento" data-stagger="90">
-            {t.items.map((r, j) => <ResourceCard r={r} featured={j === 0} index={j} />)}
-          </div>
-        ) : (
-          <p class="empty">Nothing here yet — the first {t.label.toLowerCase()} drop is coming soon. <a href="#dm">Get it in your DM</a>.</p>
+        <div class="bento" data-stagger="70">
+          {shown(t.items).map((r, j) => <ResourceCard r={r} featured={j === 0 && !search} index={j} />)}
+        </div>
+        <p class="empty" hidden data-empty>No resources match that search yet. Try another word, or <a href="#cat-ai-tools">browse a category</a>.</p>
+        {limit && t.items.length > limit && (
+          <p class="res__more"><a class="btn btn-ghost" href={`/resources/#cat-${t.key === 'all' ? 'ai-tools' : t.key}`}>See all {t.items.length} {t.key === 'all' ? 'resources' : t.label.toLowerCase()} <Icon name="arrow-right" /></a></p>
         )}
       </div>
     ))}
@@ -50,27 +58,27 @@ const tabs = [
 </section>
 
 <style>
-  .res { background: color-mix(in srgb, var(--bone) 84%, var(--sand)); color: var(--ink); --muted: var(--slate); --line: var(--line-light); }
-  .res .eyebrow { --accent: var(--ocean); }
-  .res .h-1 .serif { color: var(--ocean); }
+  .res { background: radial-gradient(60% 50% at 0% 0%, rgb(10 61 143 / 0.35), transparent 70%), var(--bg); }
   .res__anchor { position: absolute; top: 0; }
-
-  .tabs {
-    display: flex; gap: var(--s-2); overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--margin) * -1);
-    padding: 2px var(--margin) var(--s-5); scroll-snap-type: x proximity;
-  }
+  .res__bar { display: grid; gap: var(--s-4); margin-bottom: var(--s-5); }
+  @media (min-width: 1100px) { .res__bar { grid-template-columns: 1fr minmax(260px, 340px); align-items: center; } }
+  .tabs { display: flex; gap: var(--s-2); overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--margin) * -1); padding: 2px var(--margin); scroll-snap-type: x proximity; }
   .tabs::-webkit-scrollbar { display: none; }
   .tab {
     flex: none; scroll-snap-align: start; min-height: 44px; padding: 0 var(--s-4); border-radius: 999px; cursor: pointer;
-    border: 1px solid var(--line-light); background: var(--bone); color: var(--ink); font-weight: 600; font-size: 0.9375rem;
-    display: inline-flex; align-items: center; gap: var(--s-2); transition: background-color 0.2s, color 0.2s;
+    border: 1px solid var(--border-strong); background: rgb(255 255 255 / 0.02); color: var(--text-soft); font-weight: 500; font-size: 0.9rem;
+    display: inline-flex; align-items: center; gap: var(--s-2); transition: background-color 0.2s, color 0.2s, border-color 0.2s;
   }
-  .tab:hover { border-color: var(--ink); }
-  .tab[aria-selected='true'] { background: var(--ink); color: var(--bone); border-color: var(--ink); }
-  .tab__count { font-size: 0.75rem; font-weight: 600; opacity: 0.75; font-variant-numeric: tabular-nums; }
+  .tab:hover { border-color: var(--text); color: var(--text); }
+  .tab[aria-selected='true'] { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .tab__count { font-size: 0.72rem; font-weight: 600; opacity: 0.7; font-variant-numeric: tabular-nums; }
+  .search { display: flex; align-items: center; gap: var(--s-2); min-height: 48px; padding: 0 var(--s-4); border-radius: 999px; border: 1px solid var(--border-strong); background: var(--glass); }
+  .search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px rgb(122 162 255 / 0.15); }
+  .search svg { width: 18px; height: 18px; color: var(--muted); flex: none; }
+  .search input { flex: 1; min-width: 0; background: none; border: 0; outline: none; color: var(--text); font-size: 0.95rem; }
+  .search input::placeholder { color: var(--muted); }
   .panel:focus-visible { outline-offset: 8px; border-radius: var(--radius-l); }
 
-  /* Bento: 1 → 2 → 12-column grid with a featured lead card */
   .bento { display: grid; gap: var(--gutter); grid-template-columns: 1fr; }
   @media (min-width: 680px) {
     .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -79,18 +87,35 @@ const tabs = [
   @media (min-width: 1100px) {
     .bento { grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: dense; }
     .bento > :global(.card) { grid-column: span 4; }
-    .bento > :global(.card--featured) { grid-column: span 8; grid-row: span 2; min-height: 540px; }
-    /* If the lead card is alone, let it span the row */
-    .bento > :global(.card--featured:only-child) { grid-column: 1 / -1; grid-row: auto; min-height: 360px; }
+    .bento > :global(.card--featured) { grid-column: span 8; grid-row: span 2; min-height: 520px; }
+    .bento > :global(.card--featured:only-child) { grid-column: 1 / -1; grid-row: auto; min-height: 340px; }
   }
-  .empty { padding: var(--s-7) var(--s-5); border: 1px dashed var(--slate); border-radius: var(--radius-l); text-align: center; color: var(--slate); }
-  .empty a { color: var(--ink); font-weight: 600; }
+  .bento > :global(.card[hidden]) { display: none; }
+  .empty { padding: var(--s-7) var(--s-5); border: 1px dashed var(--border-strong); border-radius: var(--radius-l); text-align: center; color: var(--muted); }
+  .empty a { color: var(--text); font-weight: 600; }
+  .res__more { margin-top: var(--s-6); text-align: center; }
 </style>
 
 <script>
   const list = document.querySelector<HTMLElement>('[data-tablist]');
+  const input = document.querySelector<HTMLInputElement>('[data-search-input]');
   if (list) {
     const tabs = Array.from(list.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+    const active = () => tabs.find((t) => t.getAttribute('aria-selected') === 'true')!;
+    const applySearch = () => {
+      if (!input) return;
+      const q = input.value.trim().toLowerCase();
+      const panel = document.getElementById(active().getAttribute('aria-controls')!);
+      if (!panel) return;
+      let visible = 0;
+      panel.querySelectorAll<HTMLElement>('.card').forEach((c) => {
+        const hit = !q || q.split(/\s+/).every((w) => (c.dataset.search ?? '').includes(w));
+        c.hidden = !hit;
+        if (hit) { visible++; c.classList.add('in'); }
+      });
+      const empty = panel.querySelector<HTMLElement>('[data-empty]');
+      if (empty) empty.hidden = visible > 0;
+    };
     const select = (tab: HTMLButtonElement, focus = true) => {
       tabs.forEach((t) => {
         const on = t === tab;
@@ -102,6 +127,7 @@ const tabs = [
       });
       if (focus) tab.focus();
       tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      applySearch();
     };
     tabs.forEach((t, i) => {
       t.addEventListener('click', () => select(t));
@@ -114,7 +140,12 @@ const tabs = [
         if (j > -1) { e.preventDefault(); select(tabs[j]); }
       });
     });
-    // Deep links from the nav: /#prompts, /#github, /#fonts, /#cat-<key>
+    input?.addEventListener('input', () => {
+      // Searching always looks across everything.
+      if (input.value && active().dataset.tab !== 'all') select(tabs[0], false);
+      applySearch();
+    });
+    // Deep links: #cat-<key> (and legacy #prompts, #github, #fonts)
     const fromHash = () => {
       const h = location.hash.slice(1).replace(/^cat-/, '');
       const t = tabs.find((x) => x.dataset.tab === h);

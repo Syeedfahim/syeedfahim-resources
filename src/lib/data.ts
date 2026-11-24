@@ -18,7 +18,10 @@ export interface Resource {
   licence: string;
   licence_url?: string;
   date_added: string; // YYYY-MM-DD
-  post_slug: string;
+  /** Set when the resource came from a daily post; library picks have none. */
+  post_slug?: string;
+  /** Optional thumbnail path (e.g. /res/id.webp), or "none" for the styled category tile. */
+  thumb?: string;
 }
 
 export interface Post {
@@ -45,7 +48,10 @@ export const categoryLabel = (k: CategoryKey) => CATEGORIES.find((c) => c.key ==
 const byDateDesc = <T extends { date?: string; date_added?: string }>(a: T, b: T) =>
   (b.date ?? b.date_added ?? '').localeCompare(a.date ?? a.date_added ?? '');
 
-export const resources: Resource[] = (resourcesJson as Resource[]).slice().sort(byDateDesc);
+// Newest first; within a day, resources from a daily post come before library picks.
+export const resources: Resource[] = (resourcesJson as Resource[])
+  .slice()
+  .sort((a, b) => byDateDesc(a, b) || Number(!!b.post_slug) - Number(!!a.post_slug));
 export const posts: Post[] = (postsJson as Post[]).slice().sort(byDateDesc);
 
 export const resourceById = (id: string) => resources.find((r) => r.id === id);
@@ -70,10 +76,10 @@ export function formatDate(dateStr: string) {
 export const thumb = (src: string) => src.replace(/^\/posts\//, '/thumbs/').replace(/\.jpe?g$/i, '.webp');
 
 export const SITE = {
-  name: 'Syeed Fahim — Free Resource Hub',
+  name: 'Syeed Hossain Fahim — AI Visual Storyteller & Free Resource Hub',
   short: 'Syeed Fahim',
   description:
-    'Free resources for designers, every day: AI tools, AI prompts, design workflows, GitHub repos, fonts, textures, mockups and Figma plugins — with links to the official sources.',
+    'AI visual storyteller and content developer from Dhaka. Hire me for AI ad creatives, social campaigns, brand identity and thumbnails — and grab free design resources every day.',
   instagram: 'https://www.instagram.com/syeed_fahim/',
   instagramHandle: '@syeed_fahim',
   linkedin: 'https://www.linkedin.com/in/syeedfahim',

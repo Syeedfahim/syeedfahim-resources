@@ -2,29 +2,36 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import FactsMarquee from '../components/FactsMarquee.astro';
+import Stats from '../components/Stats.astro';
+import WorkPreview from '../components/WorkPreview.astro';
+import Services from '../components/Services.astro';
 import ResourceTabs from '../components/ResourceTabs.astro';
+import ScrollBand from '../components/ScrollBand.astro';
 import LatestDrops from '../components/LatestDrops.astro';
 import About from '../components/About.astro';
-import DmSteps from '../components/DmSteps.astro';
-import Stats from '../components/Stats.astro';
-import ScrollBand from '../components/ScrollBand.astro';
+import Contact from '../components/Contact.astro';
 import { SITE } from '../lib/data';
+import { PROFILE } from '../data/work';
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: SITE.name,
+  '@type': 'Person',
+  name: PROFILE.name,
+  jobTitle: PROFILE.role,
   url: Astro.site?.href,
-  author: { '@type': 'Person', name: SITE.author, sameAs: [SITE.instagram, SITE.linkedin] },
+  address: { '@type': 'PostalAddress', addressLocality: 'Dhaka', addressCountry: 'BD' },
+  sameAs: [SITE.instagram, SITE.linkedin],
 };
 ---
-<Base jsonLd={jsonLd}>
+<Base title="AI Visual Storyteller & Free Design Resources" jsonLd={jsonLd}>
   <Hero />
   <FactsMarquee />
+  <WorkPreview />
+  <Services />
   <Stats />
-  <ResourceTabs />
+  <ResourceTabs limit={9} />
   <ScrollBand />
   <LatestDrops />
   <About />
-  <DmSteps />
+  <Contact />
 </Base>

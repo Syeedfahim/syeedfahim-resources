@@ -9,7 +9,7 @@ const stats = [
 ];
 const compact = (v: number) => new Intl.NumberFormat('en', { notation: 'compact' }).format(v);
 ---
-<section class="stats theme-light" aria-label="In numbers">
+<section class="stats" aria-label="In numbers">
   <div class="container">
     <ul class="stats__grid" data-stagger="100">
       {stats.map((s) => (
@@ -29,9 +29,10 @@ const compact = (v: number) => new Intl.NumberFormat('en', { notation: 'compact'
   @media (min-width: 900px) { .stats__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .stat {
     display: grid; gap: var(--s-1); padding: var(--s-5); border-radius: var(--radius-l);
-    background: color-mix(in srgb, var(--bone) 70%, var(--sand)); border: 1px solid var(--line-light);
+    background: var(--glass); border: 1px solid var(--border);
   }
-  .stat__n { font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem); font-weight: 800; letter-spacing: -0.06em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat__n { font-family: var(--font-sans); font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.5rem); font-weight: 800; letter-spacing: -0.06em; line-height: 1; font-variant-numeric: tabular-nums; }
   .stat__label { margin-top: var(--s-3); font-weight: 700; }
-  .stat__note { color: var(--slate); font-size: 0.875rem; }
+  .stat__note { color: var(--muted); font-size: 0.875rem; }
+  .stats { background: var(--bg); }
 </style>

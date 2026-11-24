@@ -1,9 +1,10 @@
 ---
-import '@fontsource-variable/inter/opsz.css';
-import '@fontsource/instrument-serif/400-italic.css';
+import '@fontsource-variable/syne';
+import '@fontsource-variable/outfit';
 import 'lenis/dist/lenis.css';
 import '../styles/global.css';
-import interUrl from '@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url';
+import syneUrl from '@fontsource-variable/syne/files/syne-latin-wght-normal.woff2?url';
+import outfitUrl from '@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2?url';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { SITE } from '../lib/data';
@@ -52,10 +53,11 @@ const imageUrl = new URL(image, Astro.site).href;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0A283F" />
+    <meta name="theme-color" content="#030712" />
     <meta name="author" content={SITE.author} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href={interUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={syneUrl} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={outfitUrl} as="font" type="font/woff2" crossorigin />
     <link rel="sitemap" href="/sitemap.xml" />
 
     <!-- Open Graph (also read by Pinterest rich pins) -->

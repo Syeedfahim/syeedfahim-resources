@@ -1,0 +1,29 @@
+---
+import { SITE } from '../lib/data';
+import Icon from './Icon.astro';
+// Compact "how to get the links" strip for the resources and post pages.
+const steps = ['Comment “LINK” on a daily carousel', 'Get this page in your DM', 'Save the post for later'];
+---
+<aside class="dm container" aria-label="Get every link in your DM" data-reveal>
+  <div class="dm__inner">
+    <p class="dm__title"><strong>Get every link in your DM</strong></p>
+    <ol class="dm__steps">
+      {steps.map((s, i) => <li><span>{i + 1}</span>{s}</li>)}
+    </ol>
+    <a class="btn btn-primary" href={SITE.instagram} target="_blank" rel="noopener"><Icon name="instagram" /> Follow {SITE.instagramHandle}</a>
+  </div>
+</aside>
+
+<style>
+  .dm { margin-block: var(--s-7); }
+  .dm__inner {
+    display: grid; gap: var(--s-4); align-items: center; padding: var(--s-5); border-radius: var(--radius-l);
+    background: radial-gradient(70% 120% at 0% 0%, rgb(91 140 255 / 0.3), transparent 60%), linear-gradient(120deg, var(--bg-blue), var(--bg-deep));
+    border: 1px solid rgb(122 162 255 / 0.3);
+  }
+  @media (min-width: 1000px) { .dm__inner { grid-template-columns: auto 1fr auto; gap: var(--s-6); padding: var(--s-5) var(--s-6); } }
+  .dm__title { font-family: var(--font-display); font-size: var(--step-1); }
+  .dm__steps { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); color: var(--text-soft); font-size: 0.95rem; }
+  .dm__steps li { display: inline-flex; align-items: center; gap: var(--s-2); }
+  .dm__steps span { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: rgb(255 255 255 / 0.12); font-size: 0.8rem; font-weight: 700; }
+</style>

@@ -1,23 +1,36 @@
 ---
 import { categoryLabel, isNew, postBySlug, type Resource } from '../lib/data';
 import Icon from './Icon.astro';
+import { existsSync } from 'node:fs';
 interface Props { r: Resource; featured?: boolean; showPost?: boolean; index?: number }
 const { r, featured = false, showPost = true, index } = Astro.props;
-const fresh = isNew(r.date_added);
-const post = showPost ? postBySlug(r.post_slug) : undefined;
+// "New" only for resources that came with a daily post in the last 7 days.
+const fresh = !!r.post_slug && isNew(r.date_added);
+const post = showPost && r.post_slug ? postBySlug(r.post_slug) : undefined;
 const host = new URL(r.url).hostname.replace(/^www\./, '');
+const licence = /^free/i.test(r.licence) ? r.licence : `Free · ${r.licence}`;
+// Thumbnail: explicit path, else /res/<id>.webp if it exists, else a styled category tile.
+const auto = `/res/${r.id}.webp`;
+const img = r.thumb === 'none' ? null : r.thumb ?? (existsSync(`public${auto}`) ? auto : null);
+const initials = r.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+const search = `${r.name} ${r.description} ${categoryLabel(r.category)} ${r.licence}`.toLowerCase();
 ---
-<article class:list={['card', { 'card--featured': featured }]} data-tilt data-reveal>
+<article class:list={['card', { 'card--featured': featured }]} data-tilt data-reveal data-search={search} data-cat={r.category}>
+  <div class="card__thumb" aria-hidden="true">
+    {img
+      ? <img src={img} alt="" width="640" height="400" loading="lazy" decoding="async" />
+      : <div class={`tile tile--${r.category}`}><span class="tile__init">{initials}</span><span class="tile__name">{r.name}</span></div>}
+  </div>
   <div class="card__top">
-    <span class="card__cat">{index !== undefined && <span class="card__num serif">{String(index + 1).padStart(2, '0')}</span>}{categoryLabel(r.category)}</span>
+    <span class="card__cat">{index !== undefined && <span class="card__num">{String(index + 1).padStart(2, '0')}</span>}{categoryLabel(r.category)}</span>
     {fresh && <span class="badge badge-new">New</span>}
   </div>
   <h3 class="card__name">{r.name}</h3>
   <p class="card__why">{r.description}</p>
   <div class="card__meta">
     {r.licence_url
-      ? <a class="badge badge-licence" href={r.licence_url} target="_blank" rel="noopener" title="Read the licence">Free · {r.licence}</a>
-      : <span class="badge badge-licence">Free · {r.licence}</span>}
+      ? <a class="badge badge-licence" href={r.licence_url} target="_blank" rel="noopener" title="Read the licence">{licence}</a>
+      : <span class="badge badge-licence">{licence}</span>}
     {post && <a class="card__from" href={`/p/${post.slug}/`}>From: {post.title}</a>}
   </div>
   <a class="btn card__go" href={r.url} target="_blank" rel="noopener">
@@ -28,44 +41,45 @@ const host = new URL(r.url).hostname.replace(/^www\./, '');
 <style>
   .card {
     position: relative; display: flex; flex-direction: column; gap: var(--s-3);
-    padding: var(--s-5); border-radius: var(--radius-l); background: var(--bone); color: var(--ink);
-    border: 1px solid var(--line-light); min-height: 260px;
-    transition: box-shadow 0.3s var(--ease-out);
+    padding: var(--s-5); border-radius: var(--radius-l); color: var(--text);
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.035), rgb(255 255 255 / 0.01)), var(--glass);
+    border: 1px solid var(--border); min-height: 250px; overflow: hidden; isolation: isolate;
+    transition: border-color 0.3s, box-shadow 0.3s var(--ease-out);
   }
-  .card:hover { box-shadow: 0 30px 60px -30px rgb(10 40 63 / 0.55); }
+  .card:hover { border-color: rgb(122 162 255 / 0.35); box-shadow: 0 30px 70px -35px rgb(91 140 255 / 0.55); }
   .card::after {
-    content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s;
-    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgb(81 134 179 / 0.16), transparent 60%);
+    content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.3s;
+    background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), rgb(91 140 255 / 0.16), transparent 60%);
   }
   .card:hover::after { opacity: 1; }
+  .card__top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
+  .card__cat { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); display: inline-flex; gap: var(--s-2); align-items: baseline; }
+  .card__num { font-family: var(--font-display); font-size: 0.85rem; letter-spacing: 0; color: var(--muted); }
+  .card__name { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.08; letter-spacing: -0.02em; font-weight: 700; }
+  .card__thumb { margin: calc(var(--s-5) * -1) calc(var(--s-5) * -1) var(--s-2); aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--bg-deep); }
+  .card__thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.8s var(--ease-out); }
+  .card:hover .card__thumb img { transform: scale(1.04); }
+  .tile { position: relative; width: 100%; height: 100%; display: grid; place-items: center; overflow: hidden; background: radial-gradient(80% 100% at 100% 0%, rgb(91 140 255 / 0.5), transparent 60%), linear-gradient(150deg, var(--bg-blue), var(--bg-deep) 75%); }
+  .tile--prompts { background: radial-gradient(80% 100% at 0% 0%, rgb(137 168 255 / 0.55), transparent 60%), linear-gradient(200deg, #1a4db8, var(--bg-deep) 75%); }
+  .tile--github { background: radial-gradient(70% 90% at 50% 120%, rgb(91 140 255 / 0.55), transparent 60%), linear-gradient(180deg, #0b1630, var(--bg)); }
+  .tile--figma-plugins { background: radial-gradient(80% 100% at 0% 100%, rgb(122 162 255 / 0.5), transparent 60%), linear-gradient(120deg, #0a2a66, var(--bg-deep)); }
+  .tile--textures-mockups { background: repeating-linear-gradient(135deg, rgb(255 255 255 / 0.04) 0 2px, transparent 2px 14px), radial-gradient(80% 100% at 100% 100%, rgb(91 140 255 / 0.45), transparent 60%), linear-gradient(150deg, #0a3d8f, var(--bg-deep)); }
+  .tile__init { font-family: var(--font-display); font-weight: 800; font-size: clamp(3rem, 2rem + 3vw, 4.5rem); letter-spacing: -0.04em; color: rgb(247 248 255 / 0.92); text-shadow: 0 10px 40px rgb(91 140 255 / 0.6); }
+  .tile__name { position: absolute; left: 14px; bottom: 10px; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-soft); }
+  .card__why { color: var(--text-soft); max-width: 46ch; font-size: 0.95rem; }
+  .card__meta { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); align-items: center; font-size: 0.8125rem; }
+  .card__meta .badge-licence { text-decoration: none; }
+  .card__meta .badge-licence:hover { border-color: var(--text); }
+  .card__from { color: var(--muted); text-underline-offset: 3px; }
+  .card__go { margin-top: var(--s-2); align-self: flex-start; background: rgb(255 255 255 / 0.06); border-color: var(--border-strong); color: var(--text); min-height: 44px; font-size: 0.875rem; }
+  .card__go:hover { background: var(--text); color: var(--bg); }
   .card__go :global(svg) { transition: transform 0.3s var(--ease-out); }
   .card__go:hover :global(svg) { transform: translate(2px, -2px); }
-  .card__top { display: flex; justify-content: space-between; align-items: center; gap: var(--s-3); }
-  .card__cat { font-size: var(--step--1); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ocean); display: inline-flex; gap: var(--s-2); align-items: baseline; }
-  .card__num { font-size: 1.5rem; letter-spacing: 0; text-transform: none; color: var(--bronze); line-height: 1; }
-  .card__name { font-size: var(--step-2); line-height: 1.05; letter-spacing: -0.035em; font-weight: 800; margin-top: auto; padding-top: var(--s-5); }
-  .card__why { color: var(--slate); max-width: 46ch; }
-  .card__meta { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-3); align-items: center; font-size: 0.8125rem; }
-  .card__meta .badge-licence { --line: var(--line-light); --muted: var(--slate); text-decoration: none; }
-  .card__meta .badge-licence:hover { border-color: var(--slate); }
-  .card__from { color: var(--slate); text-underline-offset: 3px; }
-  .card__go { margin-top: var(--s-2); background: var(--ink); color: var(--bone); align-self: flex-start; }
-  .card__go:hover { background: var(--ocean); }
 
-  .card--featured {
-    background: var(--midnight); color: var(--bone); border-color: transparent; overflow: hidden; isolation: isolate;
-  }
-  .card--featured::before {
-    content: ''; position: absolute; inset: 0; z-index: -1;
-    background: radial-gradient(70% 60% at 90% 0%, rgb(81 134 179 / 0.55), transparent 70%);
-  }
-  .card--featured .card__cat { color: var(--sand); }
-  .card--featured .card__num { color: var(--sand); }
+  .card--featured { background: radial-gradient(90% 80% at 100% 0%, rgb(91 140 255 / 0.45), transparent 60%), linear-gradient(160deg, var(--bg-blue), var(--bg-deep) 70%); border-color: rgb(122 162 255 / 0.3); }
   .card--featured .card__name { font-size: var(--step-4); }
-  .card--featured .card__why { color: var(--on-dark-muted); font-size: var(--step-1); }
-  .card--featured .card__meta .badge-licence { --line: var(--line-dark); --muted: var(--on-dark-muted); }
-  .card--featured .card__meta .badge-licence:hover { border-color: var(--bone); }
-  .card--featured .card__from { color: var(--on-dark-muted); }
-  .card--featured .card__go { background: var(--sand); color: var(--ink); }
-  .card--featured .card__go:hover { background: var(--bone); }
+  .card--featured .card__thumb { aspect-ratio: 16 / 8; }
+  .card--featured .card__why { font-size: var(--step-1); }
+  .card--featured .card__go { background: var(--text); color: var(--bg); }
+  .card--featured .card__go:hover { background: #fff; }
 </style>

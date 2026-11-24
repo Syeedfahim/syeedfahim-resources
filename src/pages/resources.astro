@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import ResourceTabs from '../components/ResourceTabs.astro';
+import DmStrip from '../components/DmStrip.astro';
+import LatestDrops from '../components/LatestDrops.astro';
+import Contact from '../components/Contact.astro';
+import { resources, posts, CATEGORIES } from '../lib/data';
+---
+<Base
+  title="Free Design Resources"
+  description={`${resources.length} free, hand-picked design resources — AI tools, prompts, GitHub repos, fonts, textures and Figma plugins, each with its licence and official link.`}
+>
+  <section class="page-hero grain" aria-labelledby="page-title">
+    <div class="container">
+      <p class="eyebrow" data-reveal>Free resource hub</p>
+      <h1 id="page-title" class="h-display" data-split>Free resources <span class="serif">for designers.</span></h1>
+      <p class="lede" data-reveal>{resources.length} hand-picked, genuinely free tools across {CATEGORIES.length} categories — with the licence on every card and a button to the official source. {posts.length} daily drops so far, and a new one every day.</p>
+    </div>
+  </section>
+  <DmStrip />
+  <ResourceTabs search heading={false} />
+  <LatestDrops />
+  <Contact />
+</Base>
+
+<style>
+  .page-hero { position: relative; padding-top: calc(110px + clamp(2rem, 1rem + 4vw, 5rem)); padding-bottom: var(--s-5); background: radial-gradient(50% 70% at 85% 0%, rgb(10 61 143 / 0.8), transparent 70%), var(--bg); overflow: hidden; }
+  .page-hero .h-display { margin-top: var(--s-4); }
+  .page-hero .lede { margin-top: var(--s-5); max-width: 52ch; }
+</style>

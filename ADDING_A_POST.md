@@ -74,3 +74,20 @@ Netlify builds automatically. The build runs the same data check first, so a typ
 - Home page: hero carousel (slides from the latest posts), resource counts in the marquee, category tabs, "New" badges, Latest drops, footer mosaic.
 - A new page at `/p/<slug>/` with Open Graph, Twitter and Pinterest-ready meta (`og:type` article, cover as `og:image`).
 - `sitemap.xml`
+
+## Resource thumbnails (optional, recommended)
+
+Every resource card shows a thumbnail. After adding resources, run:
+
+```bash
+npm run thumbs   # saves public/res/<id>.webp from the official page's preview image (og:image / GitHub card)
+git add public/res
+```
+
+- Resources without a thumbnail show a styled category tile, so the build never breaks.
+- If the official preview image shows a woman's face or anything off-brand, delete that file and add `"thumb": "none"` to the resource. The card then always uses the tile.
+- You can also point `"thumb"` at your own image, e.g. `"thumb": "/res/my-image.webp"`.
+
+## Library resources (not from a post)
+
+A resource may omit `post_slug`. It then appears in the hub but not on any post page, and never gets the "New" badge.
