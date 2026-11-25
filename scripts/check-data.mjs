@@ -2,7 +2,7 @@
 // instead of shipping a broken page. Run: npm run check:data
 import { readFileSync, existsSync } from 'node:fs';
 
-const CATS = ['ai-tools', 'prompts', 'github', 'fonts', 'textures-mockups', 'figma-plugins'];
+const CATS = ['ai-tools', 'prompts', 'github', 'fonts', 'textures-mockups', 'figma-plugins', 'colors'];
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const errors = [];
@@ -42,6 +42,10 @@ for (const p of posts) {
     if (!img) continue;
     if (!/^\/posts\/\d{4}-\d{2}-\d{2}\/\d{2}\.jpg$/.test(img)) err(`${where}: image "${img}" must look like /posts/YYYY-MM-DD/NN.jpg`);
     else if (!existsSync('public' + img)) err(`${where}: image file not found: public${img}`);
+  }
+  if (p.palettes !== undefined) {
+    if (!Array.isArray(p.palettes)) err(`${where}: palettes must be an array of colour pairs`);
+    else for (const pair of p.palettes) for (const c of pair) if (!c?.name || !/^#[0-9A-F]{6}$/.test(c?.hex ?? '')) err(`${where}: palette colour needs a name and an uppercase #RRGGBB hex`);
   }
   for (const id of p.resources ?? []) if (!ids.has(id)) err(`${where}: resource id "${id}" is not in resources.json`);
 }

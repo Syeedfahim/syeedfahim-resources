@@ -7,7 +7,8 @@ export type CategoryKey =
   | 'github'
   | 'fonts'
   | 'textures-mockups'
-  | 'figma-plugins';
+  | 'figma-plugins'
+  | 'colors';
 
 export interface Resource {
   id: string;
@@ -32,6 +33,8 @@ export interface Post {
   cover: string;
   slides: string[];
   resources: string[];
+  /** Optional colour pairs shown as copyable swatches on the post page. */
+  palettes?: { name: string; hex: string }[][];
 }
 
 export const CATEGORIES: { key: CategoryKey; label: string; short: string }[] = [
@@ -41,6 +44,7 @@ export const CATEGORIES: { key: CategoryKey; label: string; short: string }[] = 
   { key: 'fonts', label: 'Fonts', short: 'Font' },
   { key: 'textures-mockups', label: 'Textures & mockups', short: 'Texture / mockup' },
   { key: 'figma-plugins', label: 'Figma plugins', short: 'Figma plugin' },
+  { key: 'colors', label: 'Color tools', short: 'Color tool' },
 ];
 
 export const categoryLabel = (k: CategoryKey) => CATEGORIES.find((c) => c.key === k)?.short ?? k;

@@ -48,5 +48,100 @@
       "antonio",
       "six-caps"
     ]
+  },
+  {
+    "slug": "best-color-combos-part-1",
+    "date": "2026-11-25",
+    "title": "7 best colour combos for your next designs",
+    "hook": "Seven tested colour pairs with HEX codes you can copy in one tap, plus three free tools to build and check your own palettes.",
+    "cover": "/posts/2026-11-25/01.jpg",
+    "slides": [
+      "/posts/2026-11-25/01.jpg",
+      "/posts/2026-11-25/02.jpg",
+      "/posts/2026-11-25/03.jpg",
+      "/posts/2026-11-25/04.jpg",
+      "/posts/2026-11-25/05.jpg",
+      "/posts/2026-11-25/06.jpg",
+      "/posts/2026-11-25/07.jpg",
+      "/posts/2026-11-25/08.jpg",
+      "/posts/2026-11-25/09.jpg"
+    ],
+    "resources": [
+      "coolors",
+      "adobe-color",
+      "webaim-contrast-checker"
+    ],
+    "palettes": [
+      [
+        {
+          "name": "Midnight Navy",
+          "hex": "#0A283F"
+        },
+        {
+          "name": "Warm Sand",
+          "hex": "#DDAD9F"
+        }
+      ],
+      [
+        {
+          "name": "Terracotta",
+          "hex": "#C8553D"
+        },
+        {
+          "name": "Cream",
+          "hex": "#F4E9D8"
+        }
+      ],
+      [
+        {
+          "name": "Forest",
+          "hex": "#1E4D3A"
+        },
+        {
+          "name": "Mint Cream",
+          "hex": "#E6F2EA"
+        }
+      ],
+      [
+        {
+          "name": "Electric Cobalt",
+          "hex": "#2D4BFF"
+        },
+        {
+          "name": "Butter Yellow",
+          "hex": "#FFE58A"
+        }
+      ],
+      [
+        {
+          "name": "Plum",
+          "hex": "#4B1F4E"
+        },
+        {
+          "name": "Blush",
+          "hex": "#F2C6C2"
+        }
+      ],
+      [
+        {
+          "name": "Charcoal",
+          "hex": "#1F2124"
+        },
+        {
+          "name": "Acid Lime",
+          "hex": "#C6F432"
+        }
+      ],
+      [
+        {
+          "name": "Deep Teal",
+          "hex": "#0F6E74"
+        },
+        {
+          "name": "Coral",
+          "hex": "#FF7F66"
+        }
+      ]
+    ]
   }
 ]
