@@ -143,5 +143,27 @@
         }
       ]
     ]
+  },
+  {
+    "slug": "texture-keywords-part-1",
+    "date": "2026-11-26",
+    "title": "4 texture keywords that find better free textures",
+    "hook": "Type these exact words into a free photo library: plastic wrap, liquid chrome, crumpled paper and frosted glass. Each one is a ready-made overlay for posters, covers and social posts.",
+    "cover": "/posts/2026-11-26/01.jpg",
+    "slides": [
+      "/posts/2026-11-26/01.jpg",
+      "/posts/2026-11-26/02.jpg",
+      "/posts/2026-11-26/03.jpg",
+      "/posts/2026-11-26/04.jpg",
+      "/posts/2026-11-26/05.jpg",
+      "/posts/2026-11-26/06.jpg",
+      "/posts/2026-11-26/07.jpg"
+    ],
+    "resources": [
+      "kw-plastic-wrap-texture",
+      "kw-liquid-chrome-texture",
+      "kw-crumpled-paper-texture",
+      "kw-frosted-glass-texture"
+    ]
   }
 ]

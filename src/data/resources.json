@@ -1,538 +1,578 @@
 [
- {
-  "id": "upscayl",
-  "name": "Upscayl",
-  "category": "ai-tools",
-  "description": "Upscale low-res images with AI on your own computer — free, offline, no account.",
-  "url": "https://upscayl.org",
-  "licence": "AGPL-3.0",
-  "licence_url": "https://github.com/upscayl/upscayl/blob/main/LICENSE",
-  "date_added": "2026-11-24",
-  "post_slug": "designer-starter-kit",
-  "thumb": "none"
- },
- {
-  "id": "prompts-chat",
-  "name": "prompts.chat",
-  "category": "prompts",
-  "description": "A huge open library of ready-made AI prompts you can copy, remix and reuse.",
-  "url": "https://prompts.chat",
-  "licence": "CC0-1.0 (prompts)",
-  "licence_url": "https://github.com/f/prompts.chat/blob/main/LICENSE",
-  "date_added": "2026-11-24",
-  "post_slug": "designer-starter-kit"
- },
- {
-  "id": "designer-skills",
-  "name": "Designer Skills Pack",
-  "category": "github",
-  "description": "100+ Claude skills for design work — hierarchy, type scales, grids, critiques and more.",
-  "url": "https://github.com/Owl-Listener/designer-skills",
-  "licence": "MIT",
-  "licence_url": "https://github.com/Owl-Listener/designer-skills/blob/main/LICENSE",
-  "date_added": "2026-11-24",
-  "post_slug": "designer-starter-kit"
- },
- {
-  "id": "inter",
-  "name": "Inter",
-  "category": "fonts",
-  "description": "A sharp, highly legible grotesk built for screens, with a Display cut for big headlines.",
-  "url": "https://rsms.me/inter/",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "designer-starter-kit"
- },
- {
-  "id": "poly-haven-textures",
-  "name": "Poly Haven Textures",
-  "category": "textures-mockups",
-  "description": "High-res scanned textures (wood, stone, fabric, concrete) free for any project.",
-  "url": "https://polyhaven.com/textures",
-  "licence": "CC0",
-  "licence_url": "https://polyhaven.com/license",
-  "date_added": "2026-11-24",
-  "post_slug": "designer-starter-kit"
- },
- {
-  "id": "lucide-figma",
-  "name": "Lucide Icons for Figma",
-  "category": "figma-plugins",
-  "description": "Drop 1,500+ clean, consistent open-source icons straight into your Figma frames.",
-  "url": "https://www.figma.com/community/plugin/939567362549682242/Lucide-Icons",
-  "licence": "ISC",
-  "licence_url": "https://lucide.dev/license",
-  "date_added": "2026-11-24",
-  "post_slug": "designer-starter-kit"
- },
- {
-  "id": "anton",
-  "name": "Anton",
-  "category": "fonts",
-  "description": "Heavy condensed caps for posters, thumbnails and loud headlines.",
-  "url": "https://fonts.google.com/specimen/Anton",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/anton/OFL.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "tall-fonts"
- },
- {
-  "id": "bebas-neue",
-  "name": "Bebas Neue",
-  "category": "fonts",
-  "description": "Clean all-caps display font for social posts and UI headings.",
-  "url": "https://fonts.google.com/specimen/Bebas+Neue",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/bebasneue/OFL.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "tall-fonts"
- },
- {
-  "id": "oswald",
-  "name": "Oswald",
-  "category": "fonts",
-  "description": "Condensed variable font with weights from light to bold for editorial headings.",
-  "url": "https://fonts.google.com/specimen/Oswald",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/oswald/OFL.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "tall-fonts"
- },
- {
-  "id": "big-shoulders",
-  "name": "Big Shoulders",
-  "category": "fonts",
-  "description": "Condensed, industrial display type made for posters and signage.",
-  "url": "https://fonts.google.com/specimen/Big+Shoulders",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/bigshouldersdisplay/OFL.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "tall-fonts"
- },
- {
-  "id": "antonio",
-  "name": "Antonio",
-  "category": "fonts",
-  "description": "Tall, refined condensed sans for elegant titles.",
-  "url": "https://fonts.google.com/specimen/Antonio",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/antonio/OFL.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "tall-fonts"
- },
- {
-  "id": "six-caps",
-  "name": "Six Caps",
-  "category": "fonts",
-  "description": "Ultra-condensed caps for dramatic one-word covers.",
-  "url": "https://fonts.google.com/specimen/Six+Caps",
-  "licence": "OFL-1.1",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/sixcaps/OFL.txt",
-  "date_added": "2026-11-24",
-  "post_slug": "tall-fonts"
- },
- {
-  "id": "comfyui",
-  "name": "ComfyUI",
-  "category": "ai-tools",
-  "description": "Node-based app for running image and video AI models on your own PC — build any workflow visually.",
-  "url": "https://www.comfy.org/",
-  "licence": "GPL-3.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/comfyanonymous/ComfyUI/blob/HEAD/LICENSE"
- },
- {
-  "id": "iopaint",
-  "name": "IOPaint",
-  "category": "ai-tools",
-  "description": "Erase objects, people or text from photos with AI inpainting — runs locally and free.",
-  "url": "https://iopaint.com/",
-  "licence": "Apache-2.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/Sanster/IOPaint/blob/HEAD/LICENSE"
- },
- {
-  "id": "rembg",
-  "name": "rembg",
-  "category": "ai-tools",
-  "description": "Remove image backgrounds in one command — great for batch product cut-outs.",
-  "url": "https://github.com/danielgatis/rembg",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/danielgatis/rembg/blob/HEAD/LICENSE.txt"
- },
- {
-  "id": "real-esrgan",
-  "name": "Real-ESRGAN",
-  "category": "ai-tools",
-  "description": "The open-source upscaler behind many AI tools — sharpen and enlarge photos and art.",
-  "url": "https://github.com/xinntao/Real-ESRGAN",
-  "licence": "BSD-3-Clause",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/xinntao/Real-ESRGAN/blob/HEAD/LICENSE"
- },
- {
-  "id": "krita-ai-diffusion",
-  "name": "Krita AI Diffusion",
-  "category": "ai-tools",
-  "description": "Generate and paint with AI right inside Krita — inpaint, extend and refine with layers.",
-  "url": "https://github.com/Acly/krita-ai-diffusion",
-  "licence": "GPL-3.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/Acly/krita-ai-diffusion/blob/HEAD/LICENSE"
- },
- {
-  "id": "fooocus",
-  "name": "Fooocus",
-  "category": "ai-tools",
-  "description": "A simple offline image generator — type a prompt, get high-quality images, no setup maze.",
-  "url": "https://github.com/lllyasviel/Fooocus",
-  "licence": "GPL-3.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/lllyasviel/Fooocus/blob/HEAD/LICENSE"
- },
- {
-  "id": "notebooklm",
-  "name": "NotebookLM",
-  "category": "ai-tools",
-  "description": "Upload briefs, PDFs or research and get summaries, answers and audio overviews from your own sources.",
-  "url": "https://notebooklm.google.com/",
-  "licence": "Free (Google account)",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "markitdown",
-  "name": "MarkItDown",
-  "category": "ai-tools",
-  "description": "Turn PDFs, Word, PowerPoint and Excel files into clean Markdown you can paste into any AI chat.",
-  "url": "https://github.com/microsoft/markitdown",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/microsoft/markitdown/blob/HEAD/LICENSE"
- },
- {
-  "id": "prompt-engineering-guide",
-  "name": "Prompt Engineering Guide",
-  "category": "prompts",
-  "description": "A free, well-organised guide to prompting techniques, with examples you can reuse.",
-  "url": "https://www.promptingguide.ai/",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/HEAD/LICENSE.md"
- },
- {
-  "id": "anthropic-prompting-docs",
-  "name": "Claude prompting guide",
-  "category": "prompts",
-  "description": "Anthropic's official guide to writing clear prompts for Claude — structure, examples and roles.",
-  "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
-  "licence": "Free (docs)",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "openai-cookbook",
-  "name": "OpenAI Cookbook",
-  "category": "prompts",
-  "description": "Practical recipes and prompt patterns for building with AI models, all open source.",
-  "url": "https://cookbook.openai.com/",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/openai/openai-cookbook/blob/HEAD/LICENSE"
- },
- {
-  "id": "figma-context-mcp",
-  "name": "Figma Context MCP",
-  "category": "github",
-  "description": "Lets AI coding agents read your Figma files so they can build layouts that match the design.",
-  "url": "https://github.com/GLips/Figma-Context-MCP",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/GLips/Figma-Context-MCP/blob/HEAD/LICENSE"
- },
- {
-  "id": "mcp-servers",
-  "name": "MCP reference servers",
-  "category": "github",
-  "description": "Official Model Context Protocol servers — connect Claude and other AI apps to files, git, the web and more.",
-  "url": "https://github.com/modelcontextprotocol/servers",
-  "licence": "MIT / Apache-2.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/modelcontextprotocol/servers/blob/HEAD/LICENSE"
- },
- {
-  "id": "penpot",
-  "name": "Penpot",
-  "category": "github",
-  "description": "Open-source design and prototyping tool — a free Figma alternative you can self-host.",
-  "url": "https://penpot.app/",
-  "licence": "MPL-2.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/penpot/penpot/blob/HEAD/LICENSE"
- },
- {
-  "id": "excalidraw",
-  "name": "Excalidraw",
-  "category": "github",
-  "description": "Hand-drawn style whiteboard for sketching flows, wireframes and ideas in seconds.",
-  "url": "https://excalidraw.com/",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/excalidraw/excalidraw/blob/HEAD/LICENSE"
- },
- {
-  "id": "shadcn-ui",
-  "name": "shadcn/ui",
-  "category": "github",
-  "description": "Beautiful, accessible UI components you copy into your project and make your own.",
-  "url": "https://ui.shadcn.com/",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/shadcn-ui/ui/blob/HEAD/LICENSE.md"
- },
- {
-  "id": "tabler-icons",
-  "name": "Tabler Icons",
-  "category": "github",
-  "description": "5,000+ clean stroke icons in SVG, with Figma and React versions.",
-  "url": "https://tabler.io/icons",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/tabler/tabler-icons/blob/HEAD/LICENSE"
- },
- {
-  "id": "phosphor-icons",
-  "name": "Phosphor Icons",
-  "category": "github",
-  "description": "Flexible icon family with six weights, from thin to duotone.",
-  "url": "https://phosphoricons.com/",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/phosphor-icons/core/blob/HEAD/LICENSE"
- },
- {
-  "id": "heroicons",
-  "name": "Heroicons",
-  "category": "github",
-  "description": "Hand-crafted SVG icons by the makers of Tailwind CSS, in outline and solid.",
-  "url": "https://heroicons.com/",
-  "licence": "MIT",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/tailwindlabs/heroicons/blob/HEAD/LICENSE"
- },
- {
-  "id": "material-symbols",
-  "name": "Material Symbols",
-  "category": "github",
-  "description": "Google's variable icon set — adjust weight, fill and size to match any UI.",
-  "url": "https://fonts.google.com/icons",
-  "licence": "Apache-2.0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/material-design-icons/blob/HEAD/LICENSE"
- },
- {
-  "id": "syne",
-  "name": "Syne",
-  "category": "fonts",
-  "description": "Wide, characterful display grotesk — perfect for bold headlines and posters.",
-  "url": "https://fonts.google.com/specimen/Syne",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/syne/OFL.txt"
- },
- {
-  "id": "outfit",
-  "name": "Outfit",
-  "category": "fonts",
-  "description": "Geometric sans that stays friendly and readable from UI text to big titles.",
-  "url": "https://fonts.google.com/specimen/Outfit",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/outfit/OFL.txt"
- },
- {
-  "id": "space-grotesk",
-  "name": "Space Grotesk",
-  "category": "fonts",
-  "description": "Techy grotesk with quirky details — great for brands with a modern edge.",
-  "url": "https://fonts.google.com/specimen/Space+Grotesk",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/spacegrotesk/OFL.txt"
- },
- {
-  "id": "dm-sans",
-  "name": "DM Sans",
-  "category": "fonts",
-  "description": "Low-contrast geometric sans that looks crisp in interfaces and decks.",
-  "url": "https://fonts.google.com/specimen/DM+Sans",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/dmsans/OFL.txt"
- },
- {
-  "id": "manrope",
-  "name": "Manrope",
-  "category": "fonts",
-  "description": "Modern sans with a semi-condensed feel — clean for apps and websites.",
-  "url": "https://fonts.google.com/specimen/Manrope",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/manrope/OFL.txt"
- },
- {
-  "id": "hind-siliguri",
-  "name": "Hind Siliguri",
-  "category": "fonts",
-  "description": "Clean Bangla + Latin font for social posts, apps and long reading.",
-  "url": "https://fonts.google.com/specimen/Hind+Siliguri",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/hindsiliguri/OFL.txt"
- },
- {
-  "id": "tiro-bangla",
-  "name": "Tiro Bangla",
-  "category": "fonts",
-  "description": "Elegant Bangla serif for editorial layouts, book covers and quotes.",
-  "url": "https://fonts.google.com/specimen/Tiro+Bangla",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/tirobangla/OFL.txt"
- },
- {
-  "id": "amiri",
-  "name": "Amiri",
-  "category": "fonts",
-  "description": "Classical Naskh Arabic typeface — beautiful for Qur'anic quotes and Islamic designs.",
-  "url": "https://fonts.google.com/specimen/Amiri",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/amiri/OFL.txt"
- },
- {
-  "id": "noto-naskh-arabic",
-  "name": "Noto Naskh Arabic",
-  "category": "fonts",
-  "description": "Highly readable Arabic text font that pairs well with any Latin sans.",
-  "url": "https://fonts.google.com/specimen/Noto+Naskh+Arabic",
-  "licence": "OFL-1.1",
-  "date_added": "2026-11-24",
-  "licence_url": "https://github.com/google/fonts/blob/main/ofl/notonaskharabic/OFL.txt"
- },
- {
-  "id": "ambientcg",
-  "name": "ambientCG",
-  "category": "textures-mockups",
-  "description": "Thousands of PBR materials, HDRIs and textures for 3D and design — all public domain.",
-  "url": "https://ambientcg.com/",
-  "licence": "CC0",
-  "date_added": "2026-11-24",
-  "licence_url": "https://ambientcg.com/"
- },
- {
-  "id": "unsplash",
-  "name": "Unsplash",
-  "category": "textures-mockups",
-  "description": "High-quality photos for backgrounds, mockup scenes and moodboards, free for commercial use.",
-  "url": "https://unsplash.com/",
-  "licence": "Unsplash License",
-  "date_added": "2026-11-24",
-  "licence_url": "https://unsplash.com/license"
- },
- {
-  "id": "pexels",
-  "name": "Pexels",
-  "category": "textures-mockups",
-  "description": "Free stock photos and videos — no attribution required.",
-  "url": "https://www.pexels.com/",
-  "licence": "Pexels License",
-  "date_added": "2026-11-24",
-  "licence_url": "https://www.pexels.com/license/"
- },
- {
-  "id": "haikei",
-  "name": "Haikei",
-  "category": "textures-mockups",
-  "description": "Generate SVG waves, blobs, gradients and layered backgrounds in your browser.",
-  "url": "https://haikei.app/",
-  "licence": "Free (web app)",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "fffuel",
-  "name": "fffuel",
-  "category": "textures-mockups",
-  "description": "A collection of free SVG generators — noise, gradients, patterns, shapes and colour tools.",
-  "url": "https://www.fffuel.co/",
-  "licence": "Free (web app)",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "iconify-figma",
-  "name": "Iconify for Figma",
-  "category": "figma-plugins",
-  "description": "250+ open-source icon sets (400k+ icons) searchable inside Figma.",
-  "url": "https://www.figma.com/community/plugin/735098390272716381/iconify",
-  "licence": "Free plugin",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "unsplash-figma",
-  "name": "Unsplash for Figma",
-  "category": "figma-plugins",
-  "description": "Drop free Unsplash photos straight into frames and shapes.",
-  "url": "https://www.figma.com/community/plugin/738454987945972471/unsplash",
-  "licence": "Free plugin",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "content-reel",
-  "name": "Content Reel",
-  "category": "figma-plugins",
-  "description": "Fill layouts with realistic names, text, avatars and icons in one click.",
-  "url": "https://www.figma.com/community/plugin/731627216655469013/content-reel",
-  "licence": "Free plugin",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "color-blind",
-  "name": "Color Blind",
-  "category": "figma-plugins",
-  "description": "Preview your design through 8 types of colour vision deficiency to check accessibility.",
-  "url": "https://www.figma.com/community/plugin/733343906244951586/color-blind",
-  "licence": "Free plugin",
-  "date_added": "2026-11-24"
- },
- {
-  "id": "coolors",
-  "name": "Coolors",
-  "category": "colors",
-  "description": "Palette generator: lock the colours you like and press space to explore matching combinations.",
-  "url": "https://coolors.co/",
-  "licence": "Free web app (paid Pro optional)",
-  "date_added": "2026-11-25",
-  "post_slug": "best-color-combos-part-1"
- },
- {
-  "id": "adobe-color",
-  "name": "Adobe Color",
-  "category": "colors",
-  "description": "Build harmonies on a colour wheel, extract palettes from images and check accessibility.",
-  "url": "https://color.adobe.com/create/color-wheel",
-  "licence": "Free web app",
-  "date_added": "2026-11-25",
-  "post_slug": "best-color-combos-part-1",
-  "thumb": "none"
- },
- {
-  "id": "webaim-contrast-checker",
-  "name": "WebAIM Contrast Checker",
-  "category": "colors",
-  "description": "Paste two HEX codes to see if your text passes WCAG contrast before you ship.",
-  "url": "https://webaim.org/resources/contrastchecker/",
-  "licence": "Free web tool",
-  "date_added": "2026-11-25",
-  "post_slug": "best-color-combos-part-1"
- }
+  {
+    "id": "upscayl",
+    "name": "Upscayl",
+    "category": "ai-tools",
+    "description": "Upscale low-res images with AI on your own computer — free, offline, no account.",
+    "url": "https://upscayl.org",
+    "licence": "AGPL-3.0",
+    "licence_url": "https://github.com/upscayl/upscayl/blob/main/LICENSE",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit",
+    "thumb": "none"
+  },
+  {
+    "id": "prompts-chat",
+    "name": "prompts.chat",
+    "category": "prompts",
+    "description": "A huge open library of ready-made AI prompts you can copy, remix and reuse.",
+    "url": "https://prompts.chat",
+    "licence": "CC0-1.0 (prompts)",
+    "licence_url": "https://github.com/f/prompts.chat/blob/main/LICENSE",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "designer-skills",
+    "name": "Designer Skills Pack",
+    "category": "github",
+    "description": "100+ Claude skills for design work — hierarchy, type scales, grids, critiques and more.",
+    "url": "https://github.com/Owl-Listener/designer-skills",
+    "licence": "MIT",
+    "licence_url": "https://github.com/Owl-Listener/designer-skills/blob/main/LICENSE",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "inter",
+    "name": "Inter",
+    "category": "fonts",
+    "description": "A sharp, highly legible grotesk built for screens, with a Display cut for big headlines.",
+    "url": "https://rsms.me/inter/",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "poly-haven-textures",
+    "name": "Poly Haven Textures",
+    "category": "textures-mockups",
+    "description": "High-res scanned textures (wood, stone, fabric, concrete) free for any project.",
+    "url": "https://polyhaven.com/textures",
+    "licence": "CC0",
+    "licence_url": "https://polyhaven.com/license",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "lucide-figma",
+    "name": "Lucide Icons for Figma",
+    "category": "figma-plugins",
+    "description": "Drop 1,500+ clean, consistent open-source icons straight into your Figma frames.",
+    "url": "https://www.figma.com/community/plugin/939567362549682242/Lucide-Icons",
+    "licence": "ISC",
+    "licence_url": "https://lucide.dev/license",
+    "date_added": "2026-11-24",
+    "post_slug": "designer-starter-kit"
+  },
+  {
+    "id": "anton",
+    "name": "Anton",
+    "category": "fonts",
+    "description": "Heavy condensed caps for posters, thumbnails and loud headlines.",
+    "url": "https://fonts.google.com/specimen/Anton",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/anton/OFL.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "tall-fonts"
+  },
+  {
+    "id": "bebas-neue",
+    "name": "Bebas Neue",
+    "category": "fonts",
+    "description": "Clean all-caps display font for social posts and UI headings.",
+    "url": "https://fonts.google.com/specimen/Bebas+Neue",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/bebasneue/OFL.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "tall-fonts"
+  },
+  {
+    "id": "oswald",
+    "name": "Oswald",
+    "category": "fonts",
+    "description": "Condensed variable font with weights from light to bold for editorial headings.",
+    "url": "https://fonts.google.com/specimen/Oswald",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/oswald/OFL.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "tall-fonts"
+  },
+  {
+    "id": "big-shoulders",
+    "name": "Big Shoulders",
+    "category": "fonts",
+    "description": "Condensed, industrial display type made for posters and signage.",
+    "url": "https://fonts.google.com/specimen/Big+Shoulders",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/bigshouldersdisplay/OFL.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "tall-fonts"
+  },
+  {
+    "id": "antonio",
+    "name": "Antonio",
+    "category": "fonts",
+    "description": "Tall, refined condensed sans for elegant titles.",
+    "url": "https://fonts.google.com/specimen/Antonio",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/antonio/OFL.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "tall-fonts"
+  },
+  {
+    "id": "six-caps",
+    "name": "Six Caps",
+    "category": "fonts",
+    "description": "Ultra-condensed caps for dramatic one-word covers.",
+    "url": "https://fonts.google.com/specimen/Six+Caps",
+    "licence": "OFL-1.1",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/sixcaps/OFL.txt",
+    "date_added": "2026-11-24",
+    "post_slug": "tall-fonts"
+  },
+  {
+    "id": "comfyui",
+    "name": "ComfyUI",
+    "category": "ai-tools",
+    "description": "Node-based app for running image and video AI models on your own PC — build any workflow visually.",
+    "url": "https://www.comfy.org/",
+    "licence": "GPL-3.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/comfyanonymous/ComfyUI/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "iopaint",
+    "name": "IOPaint",
+    "category": "ai-tools",
+    "description": "Erase objects, people or text from photos with AI inpainting — runs locally and free.",
+    "url": "https://iopaint.com/",
+    "licence": "Apache-2.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/Sanster/IOPaint/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "rembg",
+    "name": "rembg",
+    "category": "ai-tools",
+    "description": "Remove image backgrounds in one command — great for batch product cut-outs.",
+    "url": "https://github.com/danielgatis/rembg",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/danielgatis/rembg/blob/HEAD/LICENSE.txt"
+  },
+  {
+    "id": "real-esrgan",
+    "name": "Real-ESRGAN",
+    "category": "ai-tools",
+    "description": "The open-source upscaler behind many AI tools — sharpen and enlarge photos and art.",
+    "url": "https://github.com/xinntao/Real-ESRGAN",
+    "licence": "BSD-3-Clause",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/xinntao/Real-ESRGAN/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "krita-ai-diffusion",
+    "name": "Krita AI Diffusion",
+    "category": "ai-tools",
+    "description": "Generate and paint with AI right inside Krita — inpaint, extend and refine with layers.",
+    "url": "https://github.com/Acly/krita-ai-diffusion",
+    "licence": "GPL-3.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/Acly/krita-ai-diffusion/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "fooocus",
+    "name": "Fooocus",
+    "category": "ai-tools",
+    "description": "A simple offline image generator — type a prompt, get high-quality images, no setup maze.",
+    "url": "https://github.com/lllyasviel/Fooocus",
+    "licence": "GPL-3.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/lllyasviel/Fooocus/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "notebooklm",
+    "name": "NotebookLM",
+    "category": "ai-tools",
+    "description": "Upload briefs, PDFs or research and get summaries, answers and audio overviews from your own sources.",
+    "url": "https://notebooklm.google.com/",
+    "licence": "Free (Google account)",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "markitdown",
+    "name": "MarkItDown",
+    "category": "ai-tools",
+    "description": "Turn PDFs, Word, PowerPoint and Excel files into clean Markdown you can paste into any AI chat.",
+    "url": "https://github.com/microsoft/markitdown",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/microsoft/markitdown/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "prompt-engineering-guide",
+    "name": "Prompt Engineering Guide",
+    "category": "prompts",
+    "description": "A free, well-organised guide to prompting techniques, with examples you can reuse.",
+    "url": "https://www.promptingguide.ai/",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/dair-ai/Prompt-Engineering-Guide/blob/HEAD/LICENSE.md"
+  },
+  {
+    "id": "anthropic-prompting-docs",
+    "name": "Claude prompting guide",
+    "category": "prompts",
+    "description": "Anthropic's official guide to writing clear prompts for Claude — structure, examples and roles.",
+    "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+    "licence": "Free (docs)",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "openai-cookbook",
+    "name": "OpenAI Cookbook",
+    "category": "prompts",
+    "description": "Practical recipes and prompt patterns for building with AI models, all open source.",
+    "url": "https://cookbook.openai.com/",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/openai/openai-cookbook/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "figma-context-mcp",
+    "name": "Figma Context MCP",
+    "category": "github",
+    "description": "Lets AI coding agents read your Figma files so they can build layouts that match the design.",
+    "url": "https://github.com/GLips/Figma-Context-MCP",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/GLips/Figma-Context-MCP/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "mcp-servers",
+    "name": "MCP reference servers",
+    "category": "github",
+    "description": "Official Model Context Protocol servers — connect Claude and other AI apps to files, git, the web and more.",
+    "url": "https://github.com/modelcontextprotocol/servers",
+    "licence": "MIT / Apache-2.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/modelcontextprotocol/servers/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "penpot",
+    "name": "Penpot",
+    "category": "github",
+    "description": "Open-source design and prototyping tool — a free Figma alternative you can self-host.",
+    "url": "https://penpot.app/",
+    "licence": "MPL-2.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/penpot/penpot/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "excalidraw",
+    "name": "Excalidraw",
+    "category": "github",
+    "description": "Hand-drawn style whiteboard for sketching flows, wireframes and ideas in seconds.",
+    "url": "https://excalidraw.com/",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/excalidraw/excalidraw/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "shadcn-ui",
+    "name": "shadcn/ui",
+    "category": "github",
+    "description": "Beautiful, accessible UI components you copy into your project and make your own.",
+    "url": "https://ui.shadcn.com/",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/shadcn-ui/ui/blob/HEAD/LICENSE.md"
+  },
+  {
+    "id": "tabler-icons",
+    "name": "Tabler Icons",
+    "category": "github",
+    "description": "5,000+ clean stroke icons in SVG, with Figma and React versions.",
+    "url": "https://tabler.io/icons",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/tabler/tabler-icons/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "phosphor-icons",
+    "name": "Phosphor Icons",
+    "category": "github",
+    "description": "Flexible icon family with six weights, from thin to duotone.",
+    "url": "https://phosphoricons.com/",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/phosphor-icons/core/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "heroicons",
+    "name": "Heroicons",
+    "category": "github",
+    "description": "Hand-crafted SVG icons by the makers of Tailwind CSS, in outline and solid.",
+    "url": "https://heroicons.com/",
+    "licence": "MIT",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/tailwindlabs/heroicons/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "material-symbols",
+    "name": "Material Symbols",
+    "category": "github",
+    "description": "Google's variable icon set — adjust weight, fill and size to match any UI.",
+    "url": "https://fonts.google.com/icons",
+    "licence": "Apache-2.0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/material-design-icons/blob/HEAD/LICENSE"
+  },
+  {
+    "id": "syne",
+    "name": "Syne",
+    "category": "fonts",
+    "description": "Wide, characterful display grotesk — perfect for bold headlines and posters.",
+    "url": "https://fonts.google.com/specimen/Syne",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/syne/OFL.txt"
+  },
+  {
+    "id": "outfit",
+    "name": "Outfit",
+    "category": "fonts",
+    "description": "Geometric sans that stays friendly and readable from UI text to big titles.",
+    "url": "https://fonts.google.com/specimen/Outfit",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/outfit/OFL.txt"
+  },
+  {
+    "id": "space-grotesk",
+    "name": "Space Grotesk",
+    "category": "fonts",
+    "description": "Techy grotesk with quirky details — great for brands with a modern edge.",
+    "url": "https://fonts.google.com/specimen/Space+Grotesk",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/spacegrotesk/OFL.txt"
+  },
+  {
+    "id": "dm-sans",
+    "name": "DM Sans",
+    "category": "fonts",
+    "description": "Low-contrast geometric sans that looks crisp in interfaces and decks.",
+    "url": "https://fonts.google.com/specimen/DM+Sans",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/dmsans/OFL.txt"
+  },
+  {
+    "id": "manrope",
+    "name": "Manrope",
+    "category": "fonts",
+    "description": "Modern sans with a semi-condensed feel — clean for apps and websites.",
+    "url": "https://fonts.google.com/specimen/Manrope",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/manrope/OFL.txt"
+  },
+  {
+    "id": "hind-siliguri",
+    "name": "Hind Siliguri",
+    "category": "fonts",
+    "description": "Clean Bangla + Latin font for social posts, apps and long reading.",
+    "url": "https://fonts.google.com/specimen/Hind+Siliguri",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/hindsiliguri/OFL.txt"
+  },
+  {
+    "id": "tiro-bangla",
+    "name": "Tiro Bangla",
+    "category": "fonts",
+    "description": "Elegant Bangla serif for editorial layouts, book covers and quotes.",
+    "url": "https://fonts.google.com/specimen/Tiro+Bangla",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/tirobangla/OFL.txt"
+  },
+  {
+    "id": "amiri",
+    "name": "Amiri",
+    "category": "fonts",
+    "description": "Classical Naskh Arabic typeface — beautiful for Qur'anic quotes and Islamic designs.",
+    "url": "https://fonts.google.com/specimen/Amiri",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/amiri/OFL.txt"
+  },
+  {
+    "id": "noto-naskh-arabic",
+    "name": "Noto Naskh Arabic",
+    "category": "fonts",
+    "description": "Highly readable Arabic text font that pairs well with any Latin sans.",
+    "url": "https://fonts.google.com/specimen/Noto+Naskh+Arabic",
+    "licence": "OFL-1.1",
+    "date_added": "2026-11-24",
+    "licence_url": "https://github.com/google/fonts/blob/main/ofl/notonaskharabic/OFL.txt"
+  },
+  {
+    "id": "ambientcg",
+    "name": "ambientCG",
+    "category": "textures-mockups",
+    "description": "Thousands of PBR materials, HDRIs and textures for 3D and design — all public domain.",
+    "url": "https://ambientcg.com/",
+    "licence": "CC0",
+    "date_added": "2026-11-24",
+    "licence_url": "https://ambientcg.com/"
+  },
+  {
+    "id": "unsplash",
+    "name": "Unsplash",
+    "category": "textures-mockups",
+    "description": "High-quality photos for backgrounds, mockup scenes and moodboards, free for commercial use.",
+    "url": "https://unsplash.com/",
+    "licence": "Unsplash License",
+    "date_added": "2026-11-24",
+    "licence_url": "https://unsplash.com/license"
+  },
+  {
+    "id": "pexels",
+    "name": "Pexels",
+    "category": "textures-mockups",
+    "description": "Free stock photos and videos — no attribution required.",
+    "url": "https://www.pexels.com/",
+    "licence": "Pexels License",
+    "date_added": "2026-11-24",
+    "licence_url": "https://www.pexels.com/license/"
+  },
+  {
+    "id": "haikei",
+    "name": "Haikei",
+    "category": "textures-mockups",
+    "description": "Generate SVG waves, blobs, gradients and layered backgrounds in your browser.",
+    "url": "https://haikei.app/",
+    "licence": "Free (web app)",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "fffuel",
+    "name": "fffuel",
+    "category": "textures-mockups",
+    "description": "A collection of free SVG generators — noise, gradients, patterns, shapes and colour tools.",
+    "url": "https://www.fffuel.co/",
+    "licence": "Free (web app)",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "iconify-figma",
+    "name": "Iconify for Figma",
+    "category": "figma-plugins",
+    "description": "250+ open-source icon sets (400k+ icons) searchable inside Figma.",
+    "url": "https://www.figma.com/community/plugin/735098390272716381/iconify",
+    "licence": "Free plugin",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "unsplash-figma",
+    "name": "Unsplash for Figma",
+    "category": "figma-plugins",
+    "description": "Drop free Unsplash photos straight into frames and shapes.",
+    "url": "https://www.figma.com/community/plugin/738454987945972471/unsplash",
+    "licence": "Free plugin",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "content-reel",
+    "name": "Content Reel",
+    "category": "figma-plugins",
+    "description": "Fill layouts with realistic names, text, avatars and icons in one click.",
+    "url": "https://www.figma.com/community/plugin/731627216655469013/content-reel",
+    "licence": "Free plugin",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "color-blind",
+    "name": "Color Blind",
+    "category": "figma-plugins",
+    "description": "Preview your design through 8 types of colour vision deficiency to check accessibility.",
+    "url": "https://www.figma.com/community/plugin/733343906244951586/color-blind",
+    "licence": "Free plugin",
+    "date_added": "2026-11-24"
+  },
+  {
+    "id": "coolors",
+    "name": "Coolors",
+    "category": "colors",
+    "description": "Palette generator: lock the colours you like and press space to explore matching combinations.",
+    "url": "https://coolors.co/",
+    "licence": "Free web app (paid Pro optional)",
+    "date_added": "2026-11-25",
+    "post_slug": "best-color-combos-part-1"
+  },
+  {
+    "id": "adobe-color",
+    "name": "Adobe Color",
+    "category": "colors",
+    "description": "Build harmonies on a colour wheel, extract palettes from images and check accessibility.",
+    "url": "https://color.adobe.com/create/color-wheel",
+    "licence": "Free web app",
+    "date_added": "2026-11-25",
+    "post_slug": "best-color-combos-part-1",
+    "thumb": "none"
+  },
+  {
+    "id": "webaim-contrast-checker",
+    "name": "WebAIM Contrast Checker",
+    "category": "colors",
+    "description": "Paste two HEX codes to see if your text passes WCAG contrast before you ship.",
+    "url": "https://webaim.org/resources/contrastchecker/",
+    "licence": "Free web tool",
+    "date_added": "2026-11-25",
+    "post_slug": "best-color-combos-part-1"
+  },
+  {
+    "id": "kw-plastic-wrap-texture",
+    "name": "Plastic Wrap Texture",
+    "category": "textures-mockups",
+    "description": "Crinkled clear plastic. Lay it over a photo with Screen or Overlay blend for a gritty, tactile poster look.",
+    "url": "https://unsplash.com/s/photos/plastic-wrap-texture",
+    "licence": "Free under the Unsplash License",
+    "date_added": "2026-11-26",
+    "post_slug": "texture-keywords-part-1"
+  },
+  {
+    "id": "kw-liquid-chrome-texture",
+    "name": "Liquid Chrome Texture",
+    "category": "textures-mockups",
+    "description": "Molten metal swirls. Use as a background or clip it inside bold type for a Y2K chrome effect.",
+    "url": "https://unsplash.com/s/photos/liquid-chrome-texture",
+    "licence": "Free under the Unsplash License",
+    "date_added": "2026-11-26",
+    "post_slug": "texture-keywords-part-1"
+  },
+  {
+    "id": "kw-crumpled-paper-texture",
+    "name": "Crumpled Paper Texture",
+    "category": "textures-mockups",
+    "description": "Folded, creased paper. Multiply it over flat designs so they feel printed and handmade.",
+    "url": "https://unsplash.com/s/photos/crumpled-paper-texture",
+    "licence": "Free under the Unsplash License",
+    "date_added": "2026-11-26",
+    "post_slug": "texture-keywords-part-1"
+  },
+  {
+    "id": "kw-frosted-glass-texture",
+    "name": "Frosted Glass Texture",
+    "category": "textures-mockups",
+    "description": "Blurry, pebbled glass. Put it over text or photos for a soft privacy-glass, glassmorphism feel.",
+    "url": "https://unsplash.com/s/photos/frosted-glass-texture",
+    "licence": "Free under the Unsplash License",
+    "date_added": "2026-11-26",
+    "post_slug": "texture-keywords-part-1"
+  }
 ]
