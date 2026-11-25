@@ -64,3 +64,40 @@ export const EDUCATION = [
   { when: '2019', title: 'HSC — Science · GPA 5.00', org: 'Govt Science College, Farmgate' },
   { when: '2017', title: 'SSC — Science · GPA 5.00', org: 'Govt Science School, Farmgate' },
 ];
+
+// Islamic history poster series (also on Pinterest: pinterest.com/syeedfahim24). Titles and names only; no claims beyond what the posters show.
+export type Poster = { title: string; who: string; img: string; href: string; w: number; h: number };
+export type PosterSeries = { id: string; name: string; text: string; posters: Poster[] };
+const pin = (id: string) => `https://www.pinterest.com/pin/${id}/`;
+export const HISTORY_SERIES: PosterSeries[] = [
+  {
+    id: 'keyhole', name: 'Keyhole', text: 'One word, one virtue, one moment from Islamic history, seen through a keyhole. Silhouettes only, with the places that made each story.',
+    posters: [
+      { title: 'Undefeated', who: 'Khalid ibn al-Walid — Mu’tah, Yarmouk', img: '/work/history/keyhole-undefeated.webp', href: '/posts/2026-11-27/pin-01.jpg', w: 900, h: 1200 },
+      { title: 'Mercy', who: 'Salahuddin Ayyubi — Hattin, Al-Quds 1187', img: '/work/history/keyhole-mercy.webp', href: '/posts/2026-11-27/pin-02.jpg', w: 900, h: 1200 },
+      { title: 'Justice', who: 'Umar ibn al-Khattab — Madinah', img: '/work/history/keyhole-justice.webp', href: '/posts/2026-11-27/pin-03.jpg', w: 900, h: 1200 },
+      { title: 'No Return', who: 'Tariq ibn Ziyad — Gibraltar, 711', img: '/work/history/keyhole-no-return.webp', href: '/posts/2026-11-27/pin-04.jpg', w: 900, h: 1200 },
+    ],
+  },
+  {
+    id: 'they-call-him', name: 'They Call Him', text: 'The titles history gave its heroes, set in tall type over a lone warrior in silhouette. My most-viewed series on Pinterest.',
+    posters: [
+      { title: 'Saifullah', who: 'Khalid ibn al-Walid — The Sword of Allah', img: '/work/history/they-call-him-saifullah.webp', href: pin('591941944826041986'), w: 900, h: 1200 },
+      { title: 'Asadullah', who: 'Hamza ibn Abd al-Muttalib — The Lion of Allah', img: '/work/history/they-call-him-asadullah.webp', href: pin('591941944826041985'), w: 900, h: 1200 },
+      { title: 'Haydar al-Karrar', who: 'Ali ibn Abi Talib', img: '/work/history/they-call-him-haydar-al-karrar.webp', href: pin('591941944826041984'), w: 900, h: 1200 },
+      { title: 'Alp Arslan', who: 'Sultan Alp Arslan', img: '/work/history/they-call-him-alp-arslan.webp', href: pin('591941944826041983'), w: 900, h: 1200 },
+    ],
+  },
+  {
+    id: 'legends', name: 'Legends', text: 'Movie-poster portraits of commanders and sultans, each in its own colour of war and weather.',
+    posters: [
+      { title: 'Khalid', who: 'Khalid ibn al-Walid', img: '/work/history/legends-khalid.webp', href: pin('591941944825723709'), w: 900, h: 1125 },
+      { title: 'Tariq', who: 'Tariq ibn Ziyad', img: '/work/history/legends-tariq.webp', href: pin('591941944825723708'), w: 900, h: 1125 },
+      { title: 'Salahuddin', who: 'Sultan Salahuddin Ayyubi', img: '/work/history/legends-salahuddin.webp', href: pin('591941944825723712'), w: 900, h: 1125 },
+      { title: 'Qutuz', who: 'Sultan Saifuddin Qutuz', img: '/work/history/legends-qutuz.webp', href: pin('591941944825723711'), w: 900, h: 1125 },
+      { title: 'Mahmud', who: 'Sultan Mahmud Ghaznabi', img: '/work/history/legends-mahmud.webp', href: pin('591941944825723710'), w: 900, h: 1125 },
+      { title: 'Fateh', who: 'Sultan Muhammad al-Fateh', img: '/work/history/legends-fateh.webp', href: pin('591941944825723706'), w: 900, h: 1125 },
+    ],
+  },
+];
+export const PINTEREST = 'https://www.pinterest.com/syeedfahim24/';

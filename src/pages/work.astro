@@ -4,7 +4,7 @@ import WorkPreview from '../components/WorkPreview.astro';
 import Services from '../components/Services.astro';
 import Contact from '../components/Contact.astro';
 import Icon from '../components/Icon.astro';
-import { THUMBNAILS, THUMB_LINK, VIDEOS, BRANDS, EXPERIENCE, EDUCATION, TOOLS } from '../data/work';
+import { THUMBNAILS, THUMB_LINK, VIDEOS, BRANDS, EXPERIENCE, EDUCATION, TOOLS, HISTORY_SERIES, PINTEREST } from '../data/work';
 ---
 <Base title="Work" description="Selected work by Syeed Hossain Fahim — AI-assisted ad creatives, social media campaigns, YouTube thumbnails, motion and brand identities.">
   <section class="page-hero grain" aria-labelledby="page-title">
@@ -16,6 +16,36 @@ import { THUMBNAILS, THUMB_LINK, VIDEOS, BRANDS, EXPERIENCE, EDUCATION, TOOLS } 
   </section>
 
   <WorkPreview all />
+
+  <section class="section theme-dark" id="history-posters" aria-labelledby="history-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" data-reveal>Islamic history posters</p>
+          <h2 id="history-title" class="h-1" data-split>Heroes of history, <span class="serif">in one frame.</span></h2>
+        </div>
+        <a class="btn btn-ghost" href={PINTEREST} target="_blank" rel="noopener" data-reveal>See them on Pinterest <Icon name="arrow-up-right" /></a>
+      </div>
+      {HISTORY_SERIES.map((s) => (
+        <div class="series" id={`series-${s.id}`}>
+          <div class="series__head" data-reveal>
+            <h3 class="series__name">{s.name}</h3>
+            <p class="muted">{s.text}</p>
+          </div>
+          <ul class={`posters posters--${s.posters.length}`} data-stagger="70">
+            {s.posters.map((p) => (
+              <li data-reveal>
+                <a class="poster" href={p.href} target="_blank" rel="noopener">
+                  <img src={p.img} alt={`${p.title} — poster of ${p.who}, by Syeed Hossain Fahim`} width={p.w} height={p.h} loading="lazy" decoding="async" />
+                  <span class="poster__body"><span class="poster__title">{p.title}</span><span class="poster__who">{p.who}</span></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
 
   <section class="section" aria-labelledby="thumbs-title">
     <div class="container">
@@ -110,6 +140,18 @@ import { THUMBNAILS, THUMB_LINK, VIDEOS, BRANDS, EXPERIENCE, EDUCATION, TOOLS } 
 </Base>
 
 <style>
+  .series + .series { margin-top: var(--s-8); }
+  .series__head { display: grid; gap: var(--s-2); margin-bottom: var(--s-5); max-width: 60ch; }
+  .series__name { font-family: var(--font-display); font-size: var(--step-2); }
+  .posters { list-style: none; padding: 0; display: grid; gap: var(--gutter); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  @media (min-width: 900px) { .posters--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } .posters--6 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1200px) { .posters--6 { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+  .poster { position: relative; display: block; border-radius: var(--radius-m); overflow: hidden; border: 1px solid var(--border); text-decoration: none; isolation: isolate; }
+  .poster img { width: 100%; height: auto; display: block; transition: transform 0.6s var(--ease-out); }
+  .poster:hover img { transform: scale(1.03); }
+  .poster__body { padding: var(--s-3); display: grid; gap: 2px; background: var(--bg-deep); border-top: 1px solid var(--border); }
+  .poster__title { font-family: var(--font-display); font-weight: 700; }
+  .poster__who { font-size: 0.78rem; color: var(--text-soft); }
   .page-hero { position: relative; padding-top: calc(110px + clamp(2rem, 1rem + 4vw, 5rem)); padding-bottom: var(--s-5); background: radial-gradient(50% 70% at 85% 0%, rgb(10 61 143 / 0.8), transparent 70%), var(--bg); overflow: hidden; }
   .page-hero .h-display { margin-top: var(--s-5); }
   .page-hero .lede { margin-top: var(--s-5); max-width: 52ch; }
